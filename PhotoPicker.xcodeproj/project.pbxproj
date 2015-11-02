@@ -1,0 +1,433 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FB9029A91BE72761003FC829 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029A81BE72761003FC829 /* main.m */; };
+		FB9029AC1BE72761003FC829 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029AB1BE72761003FC829 /* AppDelegate.m */; };
+		FB9029AF1BE72761003FC829 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029AE1BE72761003FC829 /* ViewController.m */; };
+		FB9029B21BE72761003FC829 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB9029B01BE72761003FC829 /* Main.storyboard */; };
+		FB9029B41BE72761003FC829 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB9029B31BE72761003FC829 /* Assets.xcassets */; };
+		FB9029B71BE72761003FC829 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB9029B51BE72761003FC829 /* LaunchScreen.storyboard */; };
+		FB9029C11BE72850003FC829 /* AJLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029C01BE72850003FC829 /* AJLocationManager.m */; };
+		FB9029C41BE72AE6003FC829 /* BoPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029C31BE72AE6003FC829 /* BoPhotoPickerViewController.m */; };
+		FB9029C81BE73413003FC829 /* BoPhotoGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029C71BE73413003FC829 /* BoPhotoGroupView.m */; };
+		FB9029CB1BE73448003FC829 /* BoPhotoGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029CA1BE73448003FC829 /* BoPhotoGroupCell.m */; };
+		FB9029E41BE74548003FC829 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029CE1BE74548003FC829 /* MASCompositeConstraint.m */; };
+		FB9029E51BE74548003FC829 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029D11BE74548003FC829 /* MASConstraint.m */; };
+		FB9029E61BE74548003FC829 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029D31BE74548003FC829 /* MASConstraintMaker.m */; };
+		FB9029E71BE74548003FC829 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029D51BE74548003FC829 /* MASLayoutConstraint.m */; };
+		FB9029E81BE74548003FC829 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029D91BE74548003FC829 /* MASViewAttribute.m */; };
+		FB9029E91BE74548003FC829 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029DB1BE74548003FC829 /* MASViewConstraint.m */; };
+		FB9029EA1BE74548003FC829 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029DD1BE74548003FC829 /* NSArray+MASAdditions.m */; };
+		FB9029EB1BE74548003FC829 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029E01BE74548003FC829 /* NSLayoutConstraint+MASDebugAdditions.m */; };
+		FB9029EC1BE74548003FC829 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029E21BE74548003FC829 /* View+MASAdditions.m */; };
+		FB9029F01BE765B4003FC829 /* BoPhotoListView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029EF1BE765B4003FC829 /* BoPhotoListView.m */; };
+		FB9029F31BE765F0003FC829 /* BoPhotoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029F21BE765F0003FC829 /* BoPhotoListCell.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FB9029A41BE72761003FC829 /* PhotoPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB9029A81BE72761003FC829 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FB9029AA1BE72761003FC829 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FB9029AB1BE72761003FC829 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FB9029AD1BE72761003FC829 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FB9029AE1BE72761003FC829 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FB9029B11BE72761003FC829 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FB9029B31BE72761003FC829 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FB9029B61BE72761003FC829 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FB9029B81BE72761003FC829 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB9029BF1BE72850003FC829 /* AJLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJLocationManager.h; sourceTree = "<group>"; };
+		FB9029C01BE72850003FC829 /* AJLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJLocationManager.m; sourceTree = "<group>"; };
+		FB9029C21BE72AE6003FC829 /* BoPhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoPhotoPickerViewController.h; sourceTree = "<group>"; };
+		FB9029C31BE72AE6003FC829 /* BoPhotoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoPhotoPickerViewController.m; sourceTree = "<group>"; };
+		FB9029C61BE73413003FC829 /* BoPhotoGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoPhotoGroupView.h; sourceTree = "<group>"; };
+		FB9029C71BE73413003FC829 /* BoPhotoGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoPhotoGroupView.m; sourceTree = "<group>"; };
+		FB9029C91BE73448003FC829 /* BoPhotoGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoPhotoGroupCell.h; sourceTree = "<group>"; };
+		FB9029CA1BE73448003FC829 /* BoPhotoGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoPhotoGroupCell.m; sourceTree = "<group>"; };
+		FB9029CD1BE74548003FC829 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
+		FB9029CE1BE74548003FC829 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
+		FB9029CF1BE74548003FC829 /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
+		FB9029D01BE74548003FC829 /* MASConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraint.h; sourceTree = "<group>"; };
+		FB9029D11BE74548003FC829 /* MASConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraint.m; sourceTree = "<group>"; };
+		FB9029D21BE74548003FC829 /* MASConstraintMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraintMaker.h; sourceTree = "<group>"; };
+		FB9029D31BE74548003FC829 /* MASConstraintMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraintMaker.m; sourceTree = "<group>"; };
+		FB9029D41BE74548003FC829 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASLayoutConstraint.h; sourceTree = "<group>"; };
+		FB9029D51BE74548003FC829 /* MASLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASLayoutConstraint.m; sourceTree = "<group>"; };
+		FB9029D61BE74548003FC829 /* Masonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Masonry.h; sourceTree = "<group>"; };
+		FB9029D71BE74548003FC829 /* MASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
+		FB9029D81BE74548003FC829 /* MASViewAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewAttribute.h; sourceTree = "<group>"; };
+		FB9029D91BE74548003FC829 /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
+		FB9029DA1BE74548003FC829 /* MASViewConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewConstraint.h; sourceTree = "<group>"; };
+		FB9029DB1BE74548003FC829 /* MASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
+		FB9029DC1BE74548003FC829 /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASAdditions.h"; sourceTree = "<group>"; };
+		FB9029DD1BE74548003FC829 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MASAdditions.m"; sourceTree = "<group>"; };
+		FB9029DE1BE74548003FC829 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		FB9029DF1BE74548003FC829 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
+		FB9029E01BE74548003FC829 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
+		FB9029E11BE74548003FC829 /* View+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
+		FB9029E21BE74548003FC829 /* View+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
+		FB9029E31BE74548003FC829 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		FB9029ED1BE74F40003FC829 /* MacroDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroDefine.h; sourceTree = "<group>"; };
+		FB9029EE1BE765B4003FC829 /* BoPhotoListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoPhotoListView.h; sourceTree = "<group>"; };
+		FB9029EF1BE765B4003FC829 /* BoPhotoListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoPhotoListView.m; sourceTree = "<group>"; };
+		FB9029F11BE765F0003FC829 /* BoPhotoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoPhotoListCell.h; sourceTree = "<group>"; };
+		FB9029F21BE765F0003FC829 /* BoPhotoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoPhotoListCell.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FB9029A11BE72761003FC829 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FB90299B1BE72761003FC829 = {
+			isa = PBXGroup;
+			children = (
+				FB9029A61BE72761003FC829 /* PhotoPicker */,
+				FB9029A51BE72761003FC829 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FB9029A51BE72761003FC829 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FB9029A41BE72761003FC829 /* PhotoPicker.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FB9029A61BE72761003FC829 /* PhotoPicker */ = {
+			isa = PBXGroup;
+			children = (
+				FB9029C51BE731C6003FC829 /* PhotoPicker */,
+				FB9029BE1BE72850003FC829 /* AJLocationManager */,
+				FB9029AA1BE72761003FC829 /* AppDelegate.h */,
+				FB9029AB1BE72761003FC829 /* AppDelegate.m */,
+				FB9029AD1BE72761003FC829 /* ViewController.h */,
+				FB9029AE1BE72761003FC829 /* ViewController.m */,
+				FB9029B01BE72761003FC829 /* Main.storyboard */,
+				FB9029B31BE72761003FC829 /* Assets.xcassets */,
+				FB9029B51BE72761003FC829 /* LaunchScreen.storyboard */,
+				FB9029B81BE72761003FC829 /* Info.plist */,
+				FB9029A71BE72761003FC829 /* Supporting Files */,
+				FB9029ED1BE74F40003FC829 /* MacroDefine.h */,
+			);
+			path = PhotoPicker;
+			sourceTree = "<group>";
+		};
+		FB9029A71BE72761003FC829 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FB9029CC1BE74548003FC829 /* Masonry */,
+				FB9029A81BE72761003FC829 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FB9029BE1BE72850003FC829 /* AJLocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				FB9029BF1BE72850003FC829 /* AJLocationManager.h */,
+				FB9029C01BE72850003FC829 /* AJLocationManager.m */,
+			);
+			path = AJLocationManager;
+			sourceTree = "<group>";
+		};
+		FB9029C51BE731C6003FC829 /* PhotoPicker */ = {
+			isa = PBXGroup;
+			children = (
+				FB9029C21BE72AE6003FC829 /* BoPhotoPickerViewController.h */,
+				FB9029C31BE72AE6003FC829 /* BoPhotoPickerViewController.m */,
+				FB9029C61BE73413003FC829 /* BoPhotoGroupView.h */,
+				FB9029C71BE73413003FC829 /* BoPhotoGroupView.m */,
+				FB9029C91BE73448003FC829 /* BoPhotoGroupCell.h */,
+				FB9029CA1BE73448003FC829 /* BoPhotoGroupCell.m */,
+				FB9029EE1BE765B4003FC829 /* BoPhotoListView.h */,
+				FB9029EF1BE765B4003FC829 /* BoPhotoListView.m */,
+				FB9029F11BE765F0003FC829 /* BoPhotoListCell.h */,
+				FB9029F21BE765F0003FC829 /* BoPhotoListCell.m */,
+			);
+			name = PhotoPicker;
+			sourceTree = "<group>";
+		};
+		FB9029CC1BE74548003FC829 /* Masonry */ = {
+			isa = PBXGroup;
+			children = (
+				FB9029CD1BE74548003FC829 /* MASCompositeConstraint.h */,
+				FB9029CE1BE74548003FC829 /* MASCompositeConstraint.m */,
+				FB9029CF1BE74548003FC829 /* MASConstraint+Private.h */,
+				FB9029D01BE74548003FC829 /* MASConstraint.h */,
+				FB9029D11BE74548003FC829 /* MASConstraint.m */,
+				FB9029D21BE74548003FC829 /* MASConstraintMaker.h */,
+				FB9029D31BE74548003FC829 /* MASConstraintMaker.m */,
+				FB9029D41BE74548003FC829 /* MASLayoutConstraint.h */,
+				FB9029D51BE74548003FC829 /* MASLayoutConstraint.m */,
+				FB9029D61BE74548003FC829 /* Masonry.h */,
+				FB9029D71BE74548003FC829 /* MASUtilities.h */,
+				FB9029D81BE74548003FC829 /* MASViewAttribute.h */,
+				FB9029D91BE74548003FC829 /* MASViewAttribute.m */,
+				FB9029DA1BE74548003FC829 /* MASViewConstraint.h */,
+				FB9029DB1BE74548003FC829 /* MASViewConstraint.m */,
+				FB9029DC1BE74548003FC829 /* NSArray+MASAdditions.h */,
+				FB9029DD1BE74548003FC829 /* NSArray+MASAdditions.m */,
+				FB9029DE1BE74548003FC829 /* NSArray+MASShorthandAdditions.h */,
+				FB9029DF1BE74548003FC829 /* NSLayoutConstraint+MASDebugAdditions.h */,
+				FB9029E01BE74548003FC829 /* NSLayoutConstraint+MASDebugAdditions.m */,
+				FB9029E11BE74548003FC829 /* View+MASAdditions.h */,
+				FB9029E21BE74548003FC829 /* View+MASAdditions.m */,
+				FB9029E31BE74548003FC829 /* View+MASShorthandAdditions.h */,
+			);
+			path = Masonry;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FB9029A31BE72761003FC829 /* PhotoPicker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB9029BB1BE72761003FC829 /* Build configuration list for PBXNativeTarget "PhotoPicker" */;
+			buildPhases = (
+				FB9029A01BE72761003FC829 /* Sources */,
+				FB9029A11BE72761003FC829 /* Frameworks */,
+				FB9029A21BE72761003FC829 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PhotoPicker;
+			productName = PhotoPicker;
+			productReference = FB9029A41BE72761003FC829 /* PhotoPicker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FB90299C1BE72761003FC829 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = com.alienjun.demo;
+				TargetAttributes = {
+					FB9029A31BE72761003FC829 = {
+						CreatedOnToolsVersion = 7.1;
+					};
+				};
+			};
+			buildConfigurationList = FB90299F1BE72761003FC829 /* Build configuration list for PBXProject "PhotoPicker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FB90299B1BE72761003FC829;
+			productRefGroup = FB9029A51BE72761003FC829 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FB9029A31BE72761003FC829 /* PhotoPicker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FB9029A21BE72761003FC829 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB9029B71BE72761003FC829 /* LaunchScreen.storyboard in Resources */,
+				FB9029B41BE72761003FC829 /* Assets.xcassets in Resources */,
+				FB9029B21BE72761003FC829 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FB9029A01BE72761003FC829 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB9029EA1BE74548003FC829 /* NSArray+MASAdditions.m in Sources */,
+				FB9029F01BE765B4003FC829 /* BoPhotoListView.m in Sources */,
+				FB9029E91BE74548003FC829 /* MASViewConstraint.m in Sources */,
+				FB9029CB1BE73448003FC829 /* BoPhotoGroupCell.m in Sources */,
+				FB9029E61BE74548003FC829 /* MASConstraintMaker.m in Sources */,
+				FB9029EC1BE74548003FC829 /* View+MASAdditions.m in Sources */,
+				FB9029C81BE73413003FC829 /* BoPhotoGroupView.m in Sources */,
+				FB9029E51BE74548003FC829 /* MASConstraint.m in Sources */,
+				FB9029AF1BE72761003FC829 /* ViewController.m in Sources */,
+				FB9029E81BE74548003FC829 /* MASViewAttribute.m in Sources */,
+				FB9029EB1BE74548003FC829 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				FB9029C41BE72AE6003FC829 /* BoPhotoPickerViewController.m in Sources */,
+				FB9029E41BE74548003FC829 /* MASCompositeConstraint.m in Sources */,
+				FB9029F31BE765F0003FC829 /* BoPhotoListCell.m in Sources */,
+				FB9029E71BE74548003FC829 /* MASLayoutConstraint.m in Sources */,
+				FB9029C11BE72850003FC829 /* AJLocationManager.m in Sources */,
+				FB9029AC1BE72761003FC829 /* AppDelegate.m in Sources */,
+				FB9029A91BE72761003FC829 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FB9029B01BE72761003FC829 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FB9029B11BE72761003FC829 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FB9029B51BE72761003FC829 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FB9029B61BE72761003FC829 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FB9029B91BE72761003FC829 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FB9029BA1BE72761003FC829 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FB9029BC1BE72761003FC829 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PhotoPicker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alienjun.demo.PhotoPicker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FB9029BD1BE72761003FC829 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PhotoPicker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alienjun.demo.PhotoPicker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FB90299F1BE72761003FC829 /* Build configuration list for PBXProject "PhotoPicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB9029B91BE72761003FC829 /* Debug */,
+				FB9029BA1BE72761003FC829 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FB9029BB1BE72761003FC829 /* Build configuration list for PBXNativeTarget "PhotoPicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB9029BC1BE72761003FC829 /* Debug */,
+				FB9029BD1BE72761003FC829 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FB90299C1BE72761003FC829 /* Project object */;
+}
