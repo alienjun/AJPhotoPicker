@@ -44,11 +44,8 @@
 
 
 -(void)setup{
-    
-    UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
-    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    
-    BoPhotoListView *collectionView = [[BoPhotoListView alloc] initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) collectionViewLayout:flowLayout];
+
+    BoPhotoListView *collectionView = [[BoPhotoListView alloc] init];
     collectionView.my_delegate = self;
     [self.view addSubview:collectionView];
     [collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -131,11 +128,11 @@
 }
 
 -(void)hidenGroupView{
+    [self.bgMaskView removeFromSuperview];
     [UIView animateWithDuration:0.5 animations:^{
         self.photoGroupView.transform = CGAffineTransformMakeTranslation(0, -360);
     }completion:^(BOOL finished) {
         self.photoGroupView.hidden = YES;
-        [self.bgMaskView removeFromSuperview];
     }];
 }
 
@@ -156,7 +153,7 @@
 -(UIView *)bgMaskView{
     if (_bgMaskView == nil) {
         UIView *bgMaskView = [[UIView alloc] init];
-        bgMaskView.alpha = 0.3;
+        bgMaskView.alpha = 0.4;
         bgMaskView.backgroundColor = [UIColor blackColor];
         [self.view insertSubview:bgMaskView belowSubview:self.photoGroupView];
         bgMaskView.userInteractionEnabled = YES;

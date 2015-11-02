@@ -34,7 +34,7 @@
 
 @property (weak, nonatomic) id<BoPhotoPickerProtocol> delegate;
 
-//组过滤
+//选择过滤
 @property (nonatomic, strong) NSPredicate *selectionFilter;
 //资源过滤
 @property (nonatomic, strong) ALAssetsFilter *assetsFilter;

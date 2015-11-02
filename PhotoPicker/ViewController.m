@@ -51,4 +51,22 @@
     [self presentViewController:picker animated:YES completion:nil];
 }
 
+
+- (IBAction)test:(id)sender {
+    UIView *clickLayer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    clickLayer.backgroundColor = [UIColor redColor];
+    clickLayer.clipsToBounds = YES;
+    clickLayer.layer.cornerRadius = 10;
+    clickLayer.center = self.view.center;
+    [self.view addSubview:clickLayer];
+    
+//    clickLayer.affineTransform = CGAffineTransformIdentity;
+        [UIView animateWithDuration:0.5 animations:^{
+            clickLayer.transform = CGAffineTransformMakeScale(26.0, 26.0);
+            clickLayer.alpha = 0.3;
+        } completion:^(BOOL finished) {
+            [clickLayer removeFromSuperview];
+        }];
+}
+
 @end

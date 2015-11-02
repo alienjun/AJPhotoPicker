@@ -18,7 +18,7 @@
 
 @implementation BoPhotoGroupView
 
-#pragma mark - lifecycle
+#pragma mark - init
 -(instancetype)init{
     self = [super init];
     if (self) {
@@ -53,28 +53,17 @@
 }
 
 -(void)setupGroup{
-    //读取分组
-    if (!self.assetsLibrary)
-        self.assetsLibrary = [self.class defaultAssetsLibrary];
-    
-    if (!self.groups)
-        self.groups = [[NSMutableArray alloc] init];
-    else
-        [self.groups removeAllObjects];
+    [self.groups removeAllObjects];
     
     ALAssetsLibraryGroupsEnumerationResultsBlock resultsBlock = ^(ALAssetsGroup *group, BOOL *stop) {
-        
         if (group){
             [group setAssetsFilter:self.assetsFilter];
             if (group.numberOfAssets > 0 || self.showEmptyGroups){
                 [self.groups addObject:group];
                 
-                if (self.groups.count == 1) {
-                    if ([_my_delegate respondsToSelector:@selector(didSelectGroup:)]) {
-                        [_my_delegate didSelectGroup:group];
-                    }
+                if (self.groups.count == 1 && [_my_delegate respondsToSelector:@selector(didSelectGroup:)]) {
+                    [_my_delegate didSelectGroup:group];
                 }
-                
             }
         }else{
             [self dataReload];
@@ -104,16 +93,6 @@
     
 }
 
-#pragma mark - ALAssetsLibrary
-+ (ALAssetsLibrary *)defaultAssetsLibrary{
-    static dispatch_once_t pred = 0;
-    static ALAssetsLibrary *library = nil;
-    dispatch_once(&pred, ^{
-        library = [[ALAssetsLibrary alloc] init];
-    });
-    return library;
-}
-
 #pragma mark - Reload Data
 - (void)dataReload{
     if (self.groups.count == 0)
@@ -124,8 +103,12 @@
 }
 
 #pragma mark - Not allowed / No assets
-- (void)showNotAllowed{}
-- (void)showNoAssets{}
+- (void)showNotAllowed{
+
+}
+- (void)showNoAssets{
+
+}
 
 
 #pragma mark - uitableviewDelegate
@@ -161,5 +144,25 @@
     }
 }
 
+#pragma mark - getter/setter
+-(NSMutableArray *)groups{
+    if (!_groups) {
+        _groups = [[NSMutableArray alloc] init];
+    }
+    return _groups;
+}
+
+#pragma mark - ALAssetsLibrary
+-(ALAssetsLibrary *)assetsLibrary{
+    if (!_assetsLibrary) {
+        static dispatch_once_t pred = 0;
+        static ALAssetsLibrary *library = nil;
+        dispatch_once(&pred, ^{
+            library = [[ALAssetsLibrary alloc] init];
+        });
+        _assetsLibrary = library;
+    }
+    return _assetsLibrary;
+}
 
 @end

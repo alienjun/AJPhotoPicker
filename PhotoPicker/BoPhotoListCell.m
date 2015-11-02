@@ -8,11 +8,12 @@
 
 #import "BoPhotoListCell.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "BoTapAssetView.h"
 
 
 @interface BoPhotoListCell()
 @property (weak, nonatomic) UIImageView *imageView;
-
+@property (strong, nonatomic) BoTapAssetView *tapAssetView;
 @end
 
 @implementation BoPhotoListCell
@@ -25,6 +26,9 @@
         self.imageView = imageView;
         self.backgroundColor = [UIColor whiteColor];
     }
+    
+    
+    
     [self.imageView setImage:[UIImage imageWithCGImage:asset.thumbnail]];
 }
 @end
