@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mbe-SN-rBc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
@@ -18,19 +18,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brK-Ra-IjA">
-                                <rect key="frame" x="137" y="269" width="46" height="30"/>
+                                <rect key="frame" x="116" y="269" width="80" height="55"/>
                                 <animations/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="图片"/>
                                 <connections>
                                     <action selector="btnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WJ3-HH-3xM"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HmV-hW-LZ2">
-                                <rect key="frame" x="218" y="467" width="46" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="test:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D9L-iq-ddK"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -40,7 +32,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="162.66666666666666" y="406.59333333333331"/>
+            <point key="canvasLocation" x="162" y="406"/>
         </scene>
         <!--Demo View Controller-->
         <scene sceneID="YAr-II-nnU">

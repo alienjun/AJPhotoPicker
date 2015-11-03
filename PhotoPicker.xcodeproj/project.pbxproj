@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FB507A5C1BE79CE2002E42FB /* menu_accessory@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB507A5B1BE79CE2002E42FB /* menu_accessory@2x.png */; };
-		FB507A5E1BE79DEE002E42FB /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB507A5D1BE79DEE002E42FB /* camera@2x.png */; };
 		FB507A611BE7A37C002E42FB /* BoTapAssetView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB507A601BE7A37C002E42FB /* BoTapAssetView.m */; };
-		FB507A631BE7A444002E42FB /* AssetsPickerChecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB507A621BE7A444002E42FB /* AssetsPickerChecked@2x.png */; };
 		FB507A661BE7A6AB002E42FB /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB507A651BE7A6AB002E42FB /* DemoViewController.m */; };
 		FB507A691BE7A727002E42FB /* DemoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB507A681BE7A727002E42FB /* DemoCollectionViewCell.m */; };
 		FB507A6C1BE7A871002E42FB /* DemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB507A6B1BE7A871002E42FB /* DemoView.m */; };
@@ -35,16 +32,16 @@
 		FB9029EC1BE74548003FC829 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029E21BE74548003FC829 /* View+MASAdditions.m */; };
 		FB9029F01BE765B4003FC829 /* BoPhotoListView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029EF1BE765B4003FC829 /* BoPhotoListView.m */; };
 		FB9029F31BE765F0003FC829 /* BoPhotoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029F21BE765F0003FC829 /* BoPhotoListCell.m */; };
+		FB9029F51BE85763003FC829 /* BoAssetsPickerChecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9029F41BE85763003FC829 /* BoAssetsPickerChecked@2x.png */; };
+		FB9029F71BE85E3D003FC829 /* BoAssetsCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9029F61BE85E3D003FC829 /* BoAssetsCamera@2x.png */; };
+		FB9029FD1BE8600A003FC829 /* BoSelectGroup_tip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9029FC1BE8600A003FC829 /* BoSelectGroup_tip@2x.png */; };
+		FB902A1D1BE8B04F003FC829 /* BoPhotoPicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FB902A1C1BE8B04F003FC829 /* BoPhotoPicker.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FB507A591BE799DC002E42FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		FB507A5A1BE799DC002E42FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		FB507A5B1BE79CE2002E42FB /* menu_accessory@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_accessory@2x.png"; sourceTree = "<group>"; };
-		FB507A5D1BE79DEE002E42FB /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
 		FB507A5F1BE7A37C002E42FB /* BoTapAssetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoTapAssetView.h; sourceTree = "<group>"; };
 		FB507A601BE7A37C002E42FB /* BoTapAssetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoTapAssetView.m; sourceTree = "<group>"; };
-		FB507A621BE7A444002E42FB /* AssetsPickerChecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AssetsPickerChecked@2x.png"; sourceTree = "<group>"; };
 		FB507A641BE7A6AB002E42FB /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
 		FB507A651BE7A6AB002E42FB /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
 		FB507A671BE7A727002E42FB /* DemoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoCollectionViewCell.h; sourceTree = "<group>"; };
@@ -57,7 +54,6 @@
 		FB9029AB1BE72761003FC829 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FB9029AD1BE72761003FC829 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		FB9029AE1BE72761003FC829 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		FB9029B11BE72761003FC829 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FB9029B31BE72761003FC829 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB9029B61BE72761003FC829 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB9029B81BE72761003FC829 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -97,6 +93,11 @@
 		FB9029EF1BE765B4003FC829 /* BoPhotoListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoPhotoListView.m; sourceTree = "<group>"; };
 		FB9029F11BE765F0003FC829 /* BoPhotoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoPhotoListCell.h; sourceTree = "<group>"; };
 		FB9029F21BE765F0003FC829 /* BoPhotoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoPhotoListCell.m; sourceTree = "<group>"; };
+		FB9029F41BE85763003FC829 /* BoAssetsPickerChecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BoAssetsPickerChecked@2x.png"; sourceTree = "<group>"; };
+		FB9029F61BE85E3D003FC829 /* BoAssetsCamera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BoAssetsCamera@2x.png"; sourceTree = "<group>"; };
+		FB9029F81BE85EE9003FC829 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
+		FB9029FC1BE8600A003FC829 /* BoSelectGroup_tip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BoSelectGroup_tip@2x.png"; sourceTree = "<group>"; };
+		FB902A1C1BE8B04F003FC829 /* BoPhotoPicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BoPhotoPicker.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,8 +132,6 @@
 			children = (
 				FB9029C51BE731C6003FC829 /* PhotoPicker */,
 				FB9029BE1BE72850003FC829 /* AJLocationManager */,
-				FB9029AA1BE72761003FC829 /* AppDelegate.h */,
-				FB9029AB1BE72761003FC829 /* AppDelegate.m */,
 				FB9029AD1BE72761003FC829 /* ViewController.h */,
 				FB9029AE1BE72761003FC829 /* ViewController.m */,
 				FB9029B01BE72761003FC829 /* Main.storyboard */,
@@ -154,9 +153,11 @@
 		FB9029A71BE72761003FC829 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				FB507A621BE7A444002E42FB /* AssetsPickerChecked@2x.png */,
-				FB507A5D1BE79DEE002E42FB /* camera@2x.png */,
-				FB507A5B1BE79CE2002E42FB /* menu_accessory@2x.png */,
+				FB9029AA1BE72761003FC829 /* AppDelegate.h */,
+				FB9029AB1BE72761003FC829 /* AppDelegate.m */,
+				FB9029FC1BE8600A003FC829 /* BoSelectGroup_tip@2x.png */,
+				FB9029F41BE85763003FC829 /* BoAssetsPickerChecked@2x.png */,
+				FB9029F61BE85E3D003FC829 /* BoAssetsCamera@2x.png */,
 				FB9029CC1BE74548003FC829 /* Masonry */,
 				FB9029A81BE72761003FC829 /* main.m */,
 			);
@@ -175,6 +176,7 @@
 		FB9029C51BE731C6003FC829 /* PhotoPicker */ = {
 			isa = PBXGroup;
 			children = (
+				FB902A1C1BE8B04F003FC829 /* BoPhotoPicker.bundle */,
 				FB9029C21BE72AE6003FC829 /* BoPhotoPickerViewController.h */,
 				FB9029C31BE72AE6003FC829 /* BoPhotoPickerViewController.m */,
 				FB9029C61BE73413003FC829 /* BoPhotoGroupView.h */,
@@ -280,11 +282,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB9029B71BE72761003FC829 /* LaunchScreen.storyboard in Resources */,
-				FB507A631BE7A444002E42FB /* AssetsPickerChecked@2x.png in Resources */,
+				FB902A1D1BE8B04F003FC829 /* BoPhotoPicker.bundle in Resources */,
 				FB9029B41BE72761003FC829 /* Assets.xcassets in Resources */,
-				FB507A5E1BE79DEE002E42FB /* camera@2x.png in Resources */,
-				FB507A5C1BE79CE2002E42FB /* menu_accessory@2x.png in Resources */,
+				FB9029F71BE85E3D003FC829 /* BoAssetsCamera@2x.png in Resources */,
+				FB9029F51BE85763003FC829 /* BoAssetsPickerChecked@2x.png in Resources */,
 				FB9029B21BE72761003FC829 /* Main.storyboard in Resources */,
+				FB9029FD1BE8600A003FC829 /* BoSelectGroup_tip@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,8 +329,7 @@
 		FB9029B01BE72761003FC829 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FB9029B11BE72761003FC829 /* Base */,
-				FB507A591BE799DC002E42FB /* zh-Hans */,
+				FB9029F81BE85EE9003FC829 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -434,7 +436,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alienjun.demo.PhotoPicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2d590ceb-c44c-4b9f-b963-9def25af3678";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -448,7 +450,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alienjun.demo.PhotoPicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2d590ceb-c44c-4b9f-b963-9def25af3678";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

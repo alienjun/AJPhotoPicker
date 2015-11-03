@@ -10,7 +10,7 @@
 #import "AJLocationManager.h"
 #import "BoPhotoPickerViewController.h"
 
-@interface ViewController ()<BoPhotoPickerProtocol>
+@interface ViewController ()<BoPhotoPickerProtocol,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @end
 
@@ -36,37 +36,89 @@
     
     BoPhotoPickerViewController *picker = [[BoPhotoPickerViewController alloc] init];
     picker.maximumNumberOfSelection = 10;
+//    picker.multipleSelection = YES;
     picker.assetsFilter = [ALAssetsFilter allPhotos];
     picker.showEmptyGroups=NO;
     picker.delegate=self;
     picker.selectionFilter = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-        if ([[(ALAsset*)evaluatedObject valueForProperty:ALAssetPropertyType] isEqual:ALAssetTypeVideo]) {
-            NSTimeInterval duration = [[(ALAsset*)evaluatedObject valueForProperty:ALAssetPropertyDuration] doubleValue];
-            return duration >= 5;
-        } else {
-            return YES;
-        }
+        return YES;
     }];
     
     [self presentViewController:picker animated:YES completion:nil];
 }
 
 
-- (IBAction)test:(id)sender {
-    UIView *clickLayer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-    clickLayer.backgroundColor = [UIColor redColor];
-    clickLayer.clipsToBounds = YES;
-    clickLayer.layer.cornerRadius = 10;
-    clickLayer.center = self.view.center;
-    [self.view addSubview:clickLayer];
-    
-//    clickLayer.affineTransform = CGAffineTransformIdentity;
-        [UIView animateWithDuration:0.5 animations:^{
-            clickLayer.transform = CGAffineTransformMakeScale(26.0, 26.0);
-            clickLayer.alpha = 0.3;
-        } completion:^(BOOL finished) {
-            [clickLayer removeFromSuperview];
-        }];
+#pragma mark - BoPhotoPickerProtocol
+-(void)photoPickerDidCancel:(BoPhotoPickerViewController *)picker{
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void)photoPicker:(BoPhotoPickerViewController *)picker didSelectAssets:(NSArray *)asset{
+    
+    NSLog(@"%s",__func__);
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)photoPicker:(BoPhotoPickerViewController *)picker didSelectAsset:(ALAsset *)asset{
+    NSLog(@"%s",__func__);
+}
+
+-(void)photoPicker:(BoPhotoPickerViewController *)picker didDeselectAsset:(ALAsset *)asset{
+    NSLog(@"%s",__func__);
+}
+
+
+//超过最大选择项时
+-(void)photoPickerDidMaximum:(BoPhotoPickerViewController *)picker{
+    NSLog(@"%s",__func__);
+}
+
+//低于最低选择项时
+-(void)photoPickerDidMinimum:(BoPhotoPickerViewController *)picker{
+    NSLog(@"%s",__func__);
+}
+
+-(void)photoPickerTapAction:(BoPhotoPickerViewController *)picker{
+    [picker dismissViewControllerAnimated:NO completion:nil];
+    
+    UIImagePickerController *cameraUI = [UIImagePickerController new];
+    cameraUI.allowsEditing = NO;
+    cameraUI.delegate = self;
+    cameraUI.sourceType = UIImagePickerControllerSourceTypeCamera;
+    cameraUI.cameraFlashMode=UIImagePickerControllerCameraFlashModeAuto;
+    
+    [self presentViewController: cameraUI animated: YES completion:nil];
+    
+    
+}
+
+
+#pragma mark - UIImagePickerDelegate
+- (void) imagePickerControllerDidCancel: (UIImagePickerController *) picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+//保存相册后的回调
+- (void)image:(UIImage*)image didFinishSavingWithError:(NSError*)error contextInfo:(void*)contextInfo{
+    if (!error) {
+        NSLog(@"保存到相册成功");
+    }else{
+        NSLog(@"保存到相册出错%@", error);
+    }
+}
+
+//拍照完成
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    NSString *mediaType = [info objectForKey: UIImagePickerControllerMediaType];
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+    
+}
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+}
 @end

@@ -17,10 +17,10 @@
     CGPoint clickPoint = [touch locationInView:self];
     
     CALayer *clickLayer = [CALayer layer];
-    clickLayer.backgroundColor = [UIColor redColor].CGColor;
+    clickLayer.backgroundColor = [UIColor whiteColor].CGColor;
     clickLayer.masksToBounds = YES;
-    clickLayer.cornerRadius = 10;
-    clickLayer.frame = CGRectMake(0, 0, 20, 20);
+    clickLayer.cornerRadius = 3;
+    clickLayer.frame = CGRectMake(0, 0, 6, 6);
     clickLayer.position = clickPoint;
     clickLayer.opacity = 0.5;
     [self.layer addSublayer:clickLayer];
@@ -28,17 +28,17 @@
     
     
     CABasicAnimation* zoom = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    zoom.toValue = [NSNumber numberWithDouble:8.5];
-    zoom.duration = .2;
+    zoom.toValue = @38.5;
+    zoom.duration = .3;
     
     CABasicAnimation *fadeout = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    fadeout.toValue=[NSNumber numberWithFloat:0.0];
-    fadeout.duration=.2;
+    fadeout.toValue=@0.0;
+    fadeout.duration=.3;
     fadeout.fillMode = kCAFillModeForwards;
     fadeout.removedOnCompletion = NO;
     
     CAAnimationGroup *group=[CAAnimationGroup animation];
-    group.duration=0.2;
+    group.duration=0.3;
     [group setAnimations:@[zoom,fadeout]];
     group.delegate = self;
     group.fillMode = kCAFillModeForwards;

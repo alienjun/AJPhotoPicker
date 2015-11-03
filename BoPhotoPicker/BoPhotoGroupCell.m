@@ -25,13 +25,13 @@
     
     self.backgroundColor = mRGBToColor(0xebebeb);
     if (self.groupImageView == nil) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(14, 5, 50, 50)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 5, 50, 50)];
         [self.contentView addSubview:imageView];
         self.groupImageView = imageView;
     }
     
     if (self.groupTextLabel == nil) {
-        UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, self.bounds.size.height/2-10, [UIScreen mainScreen].bounds.size.width-70, 20)];
+        UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, self.bounds.size.height/2-10, [UIScreen mainScreen].bounds.size.width-70, 20)];
         textLabel.font = [UIFont systemFontOfSize:15];
         textLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:textLabel];
