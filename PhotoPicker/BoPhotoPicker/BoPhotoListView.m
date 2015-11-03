@@ -41,7 +41,7 @@
 }
 
 
-
+//加载图片
 - (void)setupAssets{
     
     [self.indexPathsForSelectedItems removeAllObjects];
@@ -52,8 +52,8 @@
         if (asset){
             [self.assets addObject:asset];
         }else if (self.assets.count > 0){
-            [self reloadData];
             [self scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+            [self reloadData];
         }
     };
     
@@ -110,7 +110,7 @@
     }
     
     BOOL selectable = [vc.selectionFilter evaluateWithObject:asset];
-    if (self.indexPathsForSelectedItems.count > vc.maximumNumberOfSelection) {
+    if (self.indexPathsForSelectedItems.count >= vc.maximumNumberOfSelection && ![vc.indexPathsForSelectedItems containsObject:asset]) {
         if (vc.delegate && [vc.delegate respondsToSelector:@selector(photoPickerDidMaximum:)]) {
             [vc.delegate photoPickerDidMaximum:vc];
         }
@@ -140,9 +140,9 @@
 
 }
 
--(void)tapAction{
-    if (_my_delegate && [_my_delegate respondsToSelector:@selector(tapAction)]) {
-        [_my_delegate tapAction];
+-(void)tapAction:(ALAsset *)asset{
+    if (_my_delegate && [_my_delegate respondsToSelector:@selector(tapAction:)]) {
+        [_my_delegate tapAction:asset];
     }
 }
 

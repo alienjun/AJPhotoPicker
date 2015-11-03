@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FB507A661BE7A6AB002E42FB /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB507A651BE7A6AB002E42FB /* DemoViewController.m */; };
-		FB507A691BE7A727002E42FB /* DemoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB507A681BE7A727002E42FB /* DemoCollectionViewCell.m */; };
-		FB507A6C1BE7A871002E42FB /* DemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB507A6B1BE7A871002E42FB /* DemoView.m */; };
 		FB6DF5131BE8F1D80043ED82 /* BoPhotoGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6DF5071BE8F1D80043ED82 /* BoPhotoGroupCell.m */; };
 		FB6DF5141BE8F1D80043ED82 /* BoPhotoGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6DF5091BE8F1D80043ED82 /* BoPhotoGroupView.m */; };
 		FB6DF5151BE8F1D80043ED82 /* BoPhotoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6DF50B1BE8F1D80043ED82 /* BoPhotoListCell.m */; };
@@ -36,12 +33,6 @@
 
 /* Begin PBXFileReference section */
 		FB507A5A1BE799DC002E42FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		FB507A641BE7A6AB002E42FB /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
-		FB507A651BE7A6AB002E42FB /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
-		FB507A671BE7A727002E42FB /* DemoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoCollectionViewCell.h; sourceTree = "<group>"; };
-		FB507A681BE7A727002E42FB /* DemoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoCollectionViewCell.m; sourceTree = "<group>"; };
-		FB507A6A1BE7A871002E42FB /* DemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoView.h; sourceTree = "<group>"; };
-		FB507A6B1BE7A871002E42FB /* DemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoView.m; sourceTree = "<group>"; };
 		FB6DF5061BE8F1D80043ED82 /* BoPhotoGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoPhotoGroupCell.h; sourceTree = "<group>"; };
 		FB6DF5071BE8F1D80043ED82 /* BoPhotoGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoPhotoGroupCell.m; sourceTree = "<group>"; };
 		FB6DF5081BE8F1D80043ED82 /* BoPhotoGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoPhotoGroupView.h; sourceTree = "<group>"; };
@@ -149,13 +140,6 @@
 				FB9029B51BE72761003FC829 /* LaunchScreen.storyboard */,
 				FB9029B81BE72761003FC829 /* Info.plist */,
 				FB9029A71BE72761003FC829 /* Supporting Files */,
-				FB9029ED1BE74F40003FC829 /* MacroDefine.h */,
-				FB507A641BE7A6AB002E42FB /* DemoViewController.h */,
-				FB507A651BE7A6AB002E42FB /* DemoViewController.m */,
-				FB507A671BE7A727002E42FB /* DemoCollectionViewCell.h */,
-				FB507A681BE7A727002E42FB /* DemoCollectionViewCell.m */,
-				FB507A6A1BE7A871002E42FB /* DemoView.h */,
-				FB507A6B1BE7A871002E42FB /* DemoView.m */,
 			);
 			path = PhotoPicker;
 			sourceTree = "<group>";
@@ -166,6 +150,7 @@
 				FB9029CC1BE74548003FC829 /* Masonry */,
 				FB9029AA1BE72761003FC829 /* AppDelegate.h */,
 				FB9029AB1BE72761003FC829 /* AppDelegate.m */,
+				FB9029ED1BE74F40003FC829 /* MacroDefine.h */,
 				FB9029A81BE72761003FC829 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -279,9 +264,6 @@
 				FB6DF5131BE8F1D80043ED82 /* BoPhotoGroupCell.m in Sources */,
 				FB6DF5191BE8F1D80043ED82 /* BoTapAssetView.m in Sources */,
 				FB6DF5181BE8F1D80043ED82 /* BoPhotoPickerViewController.m in Sources */,
-				FB507A691BE7A727002E42FB /* DemoCollectionViewCell.m in Sources */,
-				FB507A661BE7A6AB002E42FB /* DemoViewController.m in Sources */,
-				FB507A6C1BE7A871002E42FB /* DemoView.m in Sources */,
 				FB6DF5141BE8F1D80043ED82 /* BoPhotoGroupView.m in Sources */,
 				FB9029E61BE74548003FC829 /* MASConstraintMaker.m in Sources */,
 				FB9029EC1BE74548003FC829 /* View+MASAdditions.m in Sources */,

@@ -13,8 +13,8 @@
 @protocol BoPhotoPickerProtocol <NSObject>
 
 //选择完成
--(void)photoPicker:(BoPhotoPickerViewController *)picker didSelectAssets:(NSArray *)asset;
-//单选
+-(void)photoPicker:(BoPhotoPickerViewController *)picker didSelectAssets:(NSArray *)assets;
+
 -(void)photoPicker:(BoPhotoPickerViewController *)picker didSelectAsset:(ALAsset*)asset;
 
 -(void)photoPicker:(BoPhotoPickerViewController *)picker didDeselectAsset:(ALAsset*)asset;
@@ -32,8 +32,6 @@
 -(void)photoPickerDidMinimum:(BoPhotoPickerViewController *)picker;
 
 @end
-
-
 
 
 
@@ -57,6 +55,6 @@
 //显示空相册
 @property (nonatomic, assign) BOOL showEmptyGroups;
 
-//多选
-@property (nonatomic) BOOL multipleSelection;
+//是否开启多选
+@property (nonatomic, assign) BOOL multipleSelection;
 @end

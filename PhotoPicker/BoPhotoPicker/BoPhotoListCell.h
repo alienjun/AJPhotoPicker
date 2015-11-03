@@ -18,7 +18,7 @@
 - (void)didDeselectAsset:(ALAsset*)asset;
 
 //特殊的cell 点击操作
-- (void)tapAction;
+- (void)tapAction:(ALAsset *)asset;
 @end
 
 

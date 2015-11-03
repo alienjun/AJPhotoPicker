@@ -40,15 +40,20 @@
     [super viewDidLoad];
     
     //没有相册访问权限通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showNotAllowed) name:@"NotAllowedPhoto" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(showNotAllowed)
+                                                 name:@"NotAllowedPhoto"
+                                               object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
     [self setup];
     
     [self setupGroupView];
 }
+
 
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -191,7 +196,6 @@
     }else{
         [self hidenGroupView];
     }
-    
 }
 
 -(void)hidenGroupView{
@@ -214,8 +218,8 @@
 }
 
 #pragma mark - BoPhotoListProtocol
--(void)tapAction{
-    if (_delegate && [_delegate respondsToSelector:@selector(photoPickerTapAction:)]) {
+-(void)tapAction:(ALAsset *)asset{
+    if ([asset isKindOfClass:[UIImage class]] && _delegate && [_delegate respondsToSelector:@selector(photoPickerTapAction:)]) {
         [_delegate photoPickerTapAction:self];
     }
 }
@@ -270,12 +274,15 @@
 #pragma mark - 没有访问权限提示
 -(void)showNotAllowed{
     //没有权限时隐藏部分控件
-    NSLog(@"%s",__func__);
     self.isNotAllowed = YES;
     self.selectTip.hidden = YES;
     self.titleLabel.text = @"无权限访问相册";
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请先允许访问相册" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"前往", nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                    message:@"请先允许访问相册"
+                                                   delegate:self
+                                          cancelButtonTitle:@"取消"
+                                          otherButtonTitles:@"前往", nil];
     [alert show];
 }
 

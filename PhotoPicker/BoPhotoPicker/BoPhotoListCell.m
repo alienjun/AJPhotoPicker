@@ -71,8 +71,8 @@
 }
 
 -(void)shouldTapAction{
-    if (_delegate && [_delegate respondsToSelector:@selector(tapAction)]) {
-        [_delegate tapAction];
+    if (_delegate && [_delegate respondsToSelector:@selector(tapAction:)]) {
+        [_delegate tapAction:_asset];
     }
 }
 

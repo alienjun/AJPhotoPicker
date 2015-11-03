@@ -52,6 +52,7 @@
     self.showEmptyGroups = YES;
 }
 
+//加载相册
 -(void)setupGroup{
     [self.groups removeAllObjects];
     
@@ -72,14 +73,12 @@
         }
     };
     
-    
     ALAssetsLibraryAccessFailureBlock failureBlock = ^(NSError *error) {
         //没权限
         [self showNotAllowed];
     };
     
-
-    // Then all other groups
+    //显示的相册
     NSUInteger type = ALAssetsGroupSavedPhotos | ALAssetsGroupPhotoStream |
     ALAssetsGroupLibrary | ALAssetsGroupAlbum | ALAssetsGroupEvent |
     ALAssetsGroupFaces  ;
@@ -87,8 +86,6 @@
     [self.assetsLibrary enumerateGroupsWithTypes:type
                                       usingBlock:resultsBlock
                                     failureBlock:failureBlock];
-    
-    
 }
 
 #pragma mark - Reload Data
@@ -109,7 +106,7 @@
 }
 
 - (void)showNoAssets{
-
+    NSLog(@"%s",__func__);
 }
 
 

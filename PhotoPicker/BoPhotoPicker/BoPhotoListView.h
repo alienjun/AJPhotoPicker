@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @class ALAssetsGroup;
+@class ALAsset;
 
 @protocol BoPhotoListProtocol <NSObject>
 
--(void)tapAction;
+-(void)tapAction:(ALAsset *)asset;
 
 @end
 

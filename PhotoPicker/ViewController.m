@@ -10,7 +10,8 @@
 #import "BoPhotoPickerViewController.h"
 
 @interface ViewController ()<BoPhotoPickerProtocol,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
-
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIView *multipleView;
 @end
 
 @implementation ViewController
@@ -21,12 +22,27 @@
 }
 
 - (IBAction)btnAction:(id)sender {
-    
     BoPhotoPickerViewController *picker = [[BoPhotoPickerViewController alloc] init];
 //    picker.maximumNumberOfSelection = 10;
-//    picker.multipleSelection = YES;
+//    self.picker.multipleSelection = YES;
     picker.assetsFilter = [ALAssetsFilter allPhotos];
-    picker.showEmptyGroups=YES;
+    picker.showEmptyGroups = YES;
+    picker.delegate=self;
+    picker.selectionFilter = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        return YES;
+    }];
+    
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+
+- (IBAction)multipleBtnAction:(id)sender {
+    BoPhotoPickerViewController *picker = [[BoPhotoPickerViewController alloc] init];
+    picker.maximumNumberOfSelection = 10;
+//    self.picker.minimumNumberOfSelection = 1;
+    picker.multipleSelection = YES;
+    picker.assetsFilter = [ALAssetsFilter allPhotos];
+    picker.showEmptyGroups = YES;
     picker.delegate=self;
     picker.selectionFilter = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         return YES;
@@ -41,9 +57,27 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)photoPicker:(BoPhotoPickerViewController *)picker didSelectAssets:(NSArray *)asset{
+-(void)photoPicker:(BoPhotoPickerViewController *)picker didSelectAssets:(NSArray *)assets{
+    if (assets.count==1 ) {
+        ALAsset *asset=assets[0];
+        UIImage *tempImg=[UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage];
+        
+        self.imageView.image = tempImg;
+    }else{
     
-    NSLog(@"%s",__func__);
+        CGFloat x = 0;
+        CGRect frame = CGRectMake(0, 0, 50, 50);
+        for (int i =0 ; i< assets.count; i++) {
+            ALAsset *asset=assets[i];
+            UIImage *tempImg=[UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage];
+            frame.origin.x=x;
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
+            imageView.image = tempImg;
+            [self.multipleView addSubview:imageView];
+            
+            x+= frame.size.width+5;
+        }
+    }
     
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
