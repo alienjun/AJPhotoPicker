@@ -53,7 +53,7 @@
             [self.assets addObject:asset];
         }else if (self.assets.count > 0){
             [self reloadData];
-            [self scrollsToTop];
+            [self scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
         }
     };
     

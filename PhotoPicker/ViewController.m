@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "AJLocationManager.h"
 #import "BoPhotoPickerViewController.h"
 
 @interface ViewController ()<BoPhotoPickerProtocol,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
@@ -18,27 +17,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    
-//    [[AJLocationManager shareLocation] getAddress:^(NSString *addressString) {
-//        
-//    } error:^(NSError *error) {
-//        
-//    }];
+
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 - (IBAction)btnAction:(id)sender {
-//    [[UIApplication sharedApplication] openURL:[NSURL  URLWithString:UIApplicationOpenSettingsURLString]];
     
     BoPhotoPickerViewController *picker = [[BoPhotoPickerViewController alloc] init];
-    picker.maximumNumberOfSelection = 10;
+//    picker.maximumNumberOfSelection = 10;
 //    picker.multipleSelection = YES;
     picker.assetsFilter = [ALAssetsFilter allPhotos];
-    picker.showEmptyGroups=NO;
+    picker.showEmptyGroups=YES;
     picker.delegate=self;
     picker.selectionFilter = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         return YES;

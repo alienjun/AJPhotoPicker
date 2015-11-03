@@ -61,6 +61,12 @@
 
     if (!self.multipleSelection) {
         self.minimumNumberOfSelection = 1;
+        self.maximumNumberOfSelection = 1;
+    }else{
+        if (self.maximumNumberOfSelection == 0) {
+            self.maximumNumberOfSelection = 20;
+            self.minimumNumberOfSelection = 1;
+        }
     }
     
     BoPhotoListView *collectionView = [[BoPhotoListView alloc] init];
