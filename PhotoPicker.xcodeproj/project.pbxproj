@@ -19,7 +19,6 @@
 		FB9029AF1BE72761003FC829 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029AE1BE72761003FC829 /* ViewController.m */; };
 		FB9029B21BE72761003FC829 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB9029B01BE72761003FC829 /* Main.storyboard */; };
 		FB9029B41BE72761003FC829 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB9029B31BE72761003FC829 /* Assets.xcassets */; };
-		FB9029B71BE72761003FC829 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB9029B51BE72761003FC829 /* LaunchScreen.storyboard */; };
 		FB9029E41BE74548003FC829 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029CE1BE74548003FC829 /* MASCompositeConstraint.m */; };
 		FB9029E51BE74548003FC829 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029D11BE74548003FC829 /* MASConstraint.m */; };
 		FB9029E61BE74548003FC829 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9029D31BE74548003FC829 /* MASConstraintMaker.m */; };
@@ -32,7 +31,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FB507A5A1BE799DC002E42FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		FB6DF5061BE8F1D80043ED82 /* BoPhotoGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoPhotoGroupCell.h; sourceTree = "<group>"; };
 		FB6DF5071BE8F1D80043ED82 /* BoPhotoGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoPhotoGroupCell.m; sourceTree = "<group>"; };
 		FB6DF5081BE8F1D80043ED82 /* BoPhotoGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoPhotoGroupView.h; sourceTree = "<group>"; };
@@ -53,7 +51,6 @@
 		FB9029AD1BE72761003FC829 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		FB9029AE1BE72761003FC829 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FB9029B31BE72761003FC829 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FB9029B61BE72761003FC829 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB9029B81BE72761003FC829 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB9029CD1BE74548003FC829 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
 		FB9029CE1BE74548003FC829 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
@@ -137,7 +134,6 @@
 				FB9029AE1BE72761003FC829 /* ViewController.m */,
 				FB9029B01BE72761003FC829 /* Main.storyboard */,
 				FB9029B31BE72761003FC829 /* Assets.xcassets */,
-				FB9029B51BE72761003FC829 /* LaunchScreen.storyboard */,
 				FB9029B81BE72761003FC829 /* Info.plist */,
 				FB9029A71BE72761003FC829 /* Supporting Files */,
 			);
@@ -244,7 +240,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB9029B71BE72761003FC829 /* LaunchScreen.storyboard in Resources */,
 				FB6DF5171BE8F1D80043ED82 /* BoPhotoPicker.bundle in Resources */,
 				FB9029B41BE72761003FC829 /* Assets.xcassets in Resources */,
 				FB9029B21BE72761003FC829 /* Main.storyboard in Resources */,
@@ -288,15 +283,6 @@
 				FB9029F81BE85EE9003FC829 /* zh-Hans */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		FB9029B51BE72761003FC829 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FB9029B61BE72761003FC829 /* Base */,
-				FB507A5A1BE799DC002E42FB /* zh-Hans */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

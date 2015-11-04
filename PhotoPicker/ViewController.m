@@ -8,7 +8,8 @@
 
 #import "ViewController.h"
 #import "BoPhotoPickerViewController.h"
-
+#import <AVFoundation/AVFoundation.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 @interface ViewController ()<BoPhotoPickerProtocol,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIView *multipleView;
@@ -39,7 +40,6 @@
 - (IBAction)multipleBtnAction:(id)sender {
     BoPhotoPickerViewController *picker = [[BoPhotoPickerViewController alloc] init];
     picker.maximumNumberOfSelection = 5;
-//    self.picker.minimumNumberOfSelection = 1;
     picker.multipleSelection = YES;
     picker.assetsFilter = [ALAssetsFilter allPhotos];
     picker.showEmptyGroups = YES;
@@ -104,8 +104,12 @@
 }
 
 -(void)photoPickerTapAction:(BoPhotoPickerViewController *)picker{
-    [picker dismissViewControllerAnimated:NO completion:nil];
     
+    if(![self checkCameraAvailability]){
+        NSLog(@"没有访问相机权限");
+        return;
+    }
+    [picker dismissViewControllerAnimated:NO completion:nil];
     UIImagePickerController *cameraUI = [UIImagePickerController new];
     cameraUI.allowsEditing = NO;
     cameraUI.delegate = self;
@@ -122,7 +126,7 @@
 - (void) imagePickerControllerDidCancel: (UIImagePickerController *) picker {
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
-//保存相册后的回调
+
 - (void)image:(UIImage*)image didFinishSavingWithError:(NSError*)error contextInfo:(void*)contextInfo{
     if (!error) {
         NSLog(@"保存到相册成功");
@@ -131,13 +135,15 @@
     }
 }
 
-//拍照完成
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     NSString *mediaType = [info objectForKey: UIImagePickerControllerMediaType];
-    
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
+    UIImage *originalImage;
+    if (CFStringCompare((CFStringRef) mediaType,kUTTypeImage, 0)== kCFCompareEqualTo) {
+        originalImage = (UIImage *) [info objectForKey:UIImagePickerControllerOriginalImage];
+    }
+    self.imageView.image = originalImage;
+
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
@@ -145,4 +151,22 @@
 {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
+
+
+- (BOOL)checkCameraAvailability{
+    BOOL status = NO;
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if(authStatus == AVAuthorizationStatusAuthorized) {
+        status = YES;
+    } else if(authStatus == AVAuthorizationStatusDenied){
+        status = NO;
+    } else if(authStatus == AVAuthorizationStatusRestricted){
+        status = NO;
+    } else if(authStatus == AVAuthorizationStatusNotDetermined){
+        status = NO;
+    }
+    return status;
+}
+
+
 @end
