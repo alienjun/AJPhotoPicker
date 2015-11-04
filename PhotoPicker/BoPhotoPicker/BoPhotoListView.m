@@ -18,7 +18,7 @@
 
 @implementation BoPhotoListView
 #pragma mark - lifecycle
--(instancetype)init{
+- (instancetype)init {
     UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     self = [[BoPhotoListView alloc] initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) collectionViewLayout:flowLayout];
@@ -28,21 +28,21 @@
     return self;
 }
 
--(void)initCommon{
+- (void)initCommon {
     self.delegate = self;
     self.dataSource = self;
     [self registerClass:[BoPhotoListCell class] forCellWithReuseIdentifier:@"cell"];
     self.backgroundColor = [UIColor whiteColor];
 }
 
--(void)setAssetsGroup:(ALAssetsGroup *)assetsGroup{
+- (void)setAssetsGroup:(ALAssetsGroup *)assetsGroup {
     _assetsGroup = assetsGroup;
     [self setupAssets];
 }
 
 
 //加载图片
-- (void)setupAssets{
+- (void)setupAssets {
     
     [self.indexPathsForSelectedItems removeAllObjects];
     [self.assets removeAllObjects];
@@ -60,11 +60,11 @@
     [self.assetsGroup enumerateAssetsUsingBlock:resultsBlock];
 }
 #pragma mark - uicollectionDelegate
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.assets.count;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifer = @"cell";
     BoPhotoListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifer forIndexPath:indexPath];
     
@@ -74,26 +74,26 @@
     return cell;
 }
 
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(5, 5, 5, 5);
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat wh = (collectionView.bounds.size.width - 20)/3.0;
     
     return CGSizeMake(wh, wh);
 }
 
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return 5.0;
 }
 
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return 5.0;
 }
 
 #pragma mark - BoPhotoListCellDelegate
-- (BOOL)shouldSelectAsset:(ALAsset*)asset{
+- (BOOL)shouldSelectAsset:(ALAsset*)asset {
     //相机按钮
     if ([asset isKindOfClass:[UIImage class]]) {
         return NO;
@@ -119,7 +119,7 @@
     return (selectable && self.indexPathsForSelectedItems.count < vc.maximumNumberOfSelection);
 }
 
-- (void)didSelectAsset:(ALAsset*)asset{
+- (void)didSelectAsset:(ALAsset*)asset {
     [self.indexPathsForSelectedItems addObject:asset];
     
     BoPhotoPickerViewController *vc = (BoPhotoPickerViewController *)self.my_delegate;
@@ -129,7 +129,8 @@
         [vc.delegate photoPicker:vc didSelectAsset:asset];
     
 }
-- (void)didDeselectAsset:(ALAsset*)asset{
+
+- (void)didDeselectAsset:(ALAsset*)asset {
     [_indexPathsForSelectedItems removeObject:asset];
     
     BoPhotoPickerViewController *vc = (BoPhotoPickerViewController *)self.my_delegate;
@@ -137,24 +138,24 @@
     
     if (vc.delegate && [vc.delegate respondsToSelector:@selector(photoPicker:didDeselectAsset:)])
         [vc.delegate photoPicker:vc didDeselectAsset:asset];
-
+    
 }
 
--(void)tapAction:(ALAsset *)asset{
+- (void)tapAction:(ALAsset *)asset {
     if (_my_delegate && [_my_delegate respondsToSelector:@selector(tapAction:)]) {
         [_my_delegate tapAction:asset];
     }
 }
 
 #pragma mark - getter/setter
--(NSMutableArray *)assets{
+- (NSMutableArray *)assets {
     if (!_assets) {
         _assets = [[NSMutableArray alloc] init];
     }
     return _assets;
 }
 
--(NSMutableArray *)indexPathsForSelectedItems{
+- (NSMutableArray *)indexPathsForSelectedItems {
     if (!_indexPathsForSelectedItems) {
         _indexPathsForSelectedItems = [[NSMutableArray alloc] init];
     }

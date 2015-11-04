@@ -23,9 +23,8 @@
 
 
 @interface BoPhotoListCell : UICollectionViewCell
-
 @property (weak, nonatomic) id<BoPhotoListCellDelegate> delegate;
 
--(void)bind:(ALAsset *)asset selectionFilter:(NSPredicate*)selectionFilter isSeleced:(BOOL)isSeleced;
+- (void)bind:(ALAsset *)asset selectionFilter:(NSPredicate*)selectionFilter isSeleced:(BOOL)isSeleced;
 
 @end

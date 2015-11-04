@@ -19,10 +19,8 @@
 
 @implementation BoPhotoGroupCell
 
-
 - (void)bind:(ALAssetsGroup *)assetsGroup{
     self.assetsGroup = assetsGroup;
-    
     self.backgroundColor = mRGBToColor(0xebebeb);
     if (self.groupImageView == nil) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(14, 5, 50, 50)];
@@ -44,7 +42,6 @@
     
     self.groupImageView.image = [UIImage imageWithCGImage:posterImage scale:scale orientation:UIImageOrientationUp];
     self.groupTextLabel.text = [NSString stringWithFormat:@"%@(%ld)",[assetsGroup valueForProperty:ALAssetsGroupPropertyName],(long)[assetsGroup numberOfAssets]];
-    
 }
 
 @end

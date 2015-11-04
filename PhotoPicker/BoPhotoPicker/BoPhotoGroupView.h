@@ -12,19 +12,17 @@
 
 @protocol BoPhotoGroupViewProtocol <NSObject>
 
--(void)didSelectGroup:(ALAssetsGroup *)assetsGroup;
+- (void)didSelectGroup:(ALAssetsGroup *)assetsGroup;
 
 @end
 
 
 @interface BoPhotoGroupView : UITableView
-
 @property (weak, nonatomic) id<BoPhotoGroupViewProtocol> my_delegate;
-
 @property (nonatomic, strong) ALAssetsFilter *assetsFilter;
 @property (nonatomic) NSInteger selectIndex;
 
 //显示
--(void)setupGroup;
+- (void)setupGroup;
 
 @end

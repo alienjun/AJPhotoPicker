@@ -19,7 +19,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
 }
 
 - (IBAction)btnAction:(id)sender {
@@ -53,18 +52,16 @@
 
 
 #pragma mark - BoPhotoPickerProtocol
--(void)photoPickerDidCancel:(BoPhotoPickerViewController *)picker{
+- (void)photoPickerDidCancel:(BoPhotoPickerViewController *)picker {
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)photoPicker:(BoPhotoPickerViewController *)picker didSelectAssets:(NSArray *)assets{
+- (void)photoPicker:(BoPhotoPickerViewController *)picker didSelectAssets:(NSArray *)assets {
     if (assets.count==1 ) {
         ALAsset *asset=assets[0];
         UIImage *tempImg=[UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage];
-        
         self.imageView.image = tempImg;
-    }else{
-    
+    } else {
         CGFloat x = 0;
         CGRect frame = CGRectMake(0, 0, 50, 50);
         for (int i =0 ; i< assets.count; i++) {
@@ -76,35 +73,31 @@
             imageView.clipsToBounds = YES;
             imageView.image = tempImg;
             [self.multipleView addSubview:imageView];
-            
             x+= frame.size.width+5;
         }
     }
-    
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)photoPicker:(BoPhotoPickerViewController *)picker didSelectAsset:(ALAsset *)asset{
+- (void)photoPicker:(BoPhotoPickerViewController *)picker didSelectAsset:(ALAsset *)asset {
     NSLog(@"%s",__func__);
 }
 
--(void)photoPicker:(BoPhotoPickerViewController *)picker didDeselectAsset:(ALAsset *)asset{
+- (void)photoPicker:(BoPhotoPickerViewController *)picker didDeselectAsset:(ALAsset *)asset {
     NSLog(@"%s",__func__);
 }
-
 
 //超过最大选择项时
--(void)photoPickerDidMaximum:(BoPhotoPickerViewController *)picker{
+- (void)photoPickerDidMaximum:(BoPhotoPickerViewController *)picker {
     NSLog(@"%s",__func__);
 }
 
 //低于最低选择项时
--(void)photoPickerDidMinimum:(BoPhotoPickerViewController *)picker{
+- (void)photoPickerDidMinimum:(BoPhotoPickerViewController *)picker {
     NSLog(@"%s",__func__);
 }
 
--(void)photoPickerTapAction:(BoPhotoPickerViewController *)picker{
-    
+- (void)photoPickerTapAction:(BoPhotoPickerViewController *)picker {
     if(![self checkCameraAvailability]){
         NSLog(@"没有访问相机权限");
         return;
@@ -117,8 +110,6 @@
     cameraUI.cameraFlashMode=UIImagePickerControllerCameraFlashModeAuto;
     
     [self presentViewController: cameraUI animated: YES completion:nil];
-    
-    
 }
 
 
@@ -127,7 +118,7 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)image:(UIImage*)image didFinishSavingWithError:(NSError*)error contextInfo:(void*)contextInfo{
+- (void)image:(UIImage*)image didFinishSavingWithError:(NSError*)error contextInfo:(void*)contextInfo {
     if (!error) {
         NSLog(@"保存到相册成功");
     }else{
@@ -135,7 +126,7 @@
     }
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     NSString *mediaType = [info objectForKey: UIImagePickerControllerMediaType];
     UIImage *originalImage;
     if (CFStringCompare((CFStringRef) mediaType,kUTTypeImage, 0)== kCFCompareEqualTo) {
@@ -144,29 +135,26 @@
     self.imageView.image = originalImage;
 
     [self dismissViewControllerAnimated:YES completion:nil];
-    
 }
 
-- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
-{
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 
-- (BOOL)checkCameraAvailability{
+- (BOOL)checkCameraAvailability {
     BOOL status = NO;
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if(authStatus == AVAuthorizationStatusAuthorized) {
         status = YES;
-    } else if(authStatus == AVAuthorizationStatusDenied){
+    } else if (authStatus == AVAuthorizationStatusDenied) {
         status = NO;
-    } else if(authStatus == AVAuthorizationStatusRestricted){
+    } else if (authStatus == AVAuthorizationStatusRestricted) {
         status = NO;
-    } else if(authStatus == AVAuthorizationStatusNotDetermined){
+    } else if (authStatus == AVAuthorizationStatusNotDetermined) {
         status = NO;
     }
     return status;
 }
-
 
 @end

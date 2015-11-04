@@ -13,7 +13,7 @@
 
 @protocol BoPhotoListProtocol <NSObject>
 
--(void)tapAction:(ALAsset *)asset;
+- (void)tapAction:(ALAsset *)asset;
 
 @end
 

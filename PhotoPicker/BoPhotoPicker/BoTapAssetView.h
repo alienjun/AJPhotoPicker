@@ -12,16 +12,15 @@
 @protocol BoTapAssetViewDelegate <NSObject>
 
 //选中
--(void)touchSelect:(BOOL)select;
+- (void)touchSelect:(BOOL)select;
 
 //是否可选
--(BOOL)shouldTap;
+- (BOOL)shouldTap;
 
 //不可选时进行其他操作
--(void)shouldTapAction;
+- (void)shouldTapAction;
 
 @end
-
 
 @interface BoTapAssetView : UIView
 @property (nonatomic, assign) BOOL selected;

@@ -13,23 +13,23 @@
 @protocol BoPhotoPickerProtocol <NSObject>
 
 //选择完成
--(void)photoPicker:(BoPhotoPickerViewController *)picker didSelectAssets:(NSArray *)assets;
+- (void)photoPicker:(BoPhotoPickerViewController *)picker didSelectAssets:(NSArray *)assets;
 
--(void)photoPicker:(BoPhotoPickerViewController *)picker didSelectAsset:(ALAsset*)asset;
+- (void)photoPicker:(BoPhotoPickerViewController *)picker didSelectAsset:(ALAsset*)asset;
 
--(void)photoPicker:(BoPhotoPickerViewController *)picker didDeselectAsset:(ALAsset*)asset;
+- (void)photoPicker:(BoPhotoPickerViewController *)picker didDeselectAsset:(ALAsset*)asset;
 
 //相关操作
--(void)photoPickerTapAction:(BoPhotoPickerViewController *)picker;
+- (void)photoPickerTapAction:(BoPhotoPickerViewController *)picker;
 
 //取消
--(void)photoPickerDidCancel:(BoPhotoPickerViewController *)picker;
+- (void)photoPickerDidCancel:(BoPhotoPickerViewController *)picker;
 
 //超过最大选择项时
--(void)photoPickerDidMaximum:(BoPhotoPickerViewController *)picker;
+- (void)photoPickerDidMaximum:(BoPhotoPickerViewController *)picker;
 
 //低于最低选择项时
--(void)photoPickerDidMinimum:(BoPhotoPickerViewController *)picker;
+- (void)photoPickerDidMinimum:(BoPhotoPickerViewController *)picker;
 
 @end
 

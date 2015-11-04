@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB2E82591BEA5EB200C2AE10 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB2E82581BEA5EB200C2AE10 /* Launch Screen.storyboard */; };
 		FB6DF5131BE8F1D80043ED82 /* BoPhotoGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6DF5071BE8F1D80043ED82 /* BoPhotoGroupCell.m */; };
 		FB6DF5141BE8F1D80043ED82 /* BoPhotoGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6DF5091BE8F1D80043ED82 /* BoPhotoGroupView.m */; };
 		FB6DF5151BE8F1D80043ED82 /* BoPhotoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6DF50B1BE8F1D80043ED82 /* BoPhotoListCell.m */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB2E82581BEA5EB200C2AE10 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		FB6DF5061BE8F1D80043ED82 /* BoPhotoGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoPhotoGroupCell.h; sourceTree = "<group>"; };
 		FB6DF5071BE8F1D80043ED82 /* BoPhotoGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoPhotoGroupCell.m; sourceTree = "<group>"; };
 		FB6DF5081BE8F1D80043ED82 /* BoPhotoGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoPhotoGroupView.h; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 		FB9029A71BE72761003FC829 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FB2E82581BEA5EB200C2AE10 /* Launch Screen.storyboard */,
 				FB9029CC1BE74548003FC829 /* Masonry */,
 				FB9029AA1BE72761003FC829 /* AppDelegate.h */,
 				FB9029AB1BE72761003FC829 /* AppDelegate.m */,
@@ -242,6 +245,7 @@
 			files = (
 				FB6DF5171BE8F1D80043ED82 /* BoPhotoPicker.bundle in Resources */,
 				FB9029B41BE72761003FC829 /* Assets.xcassets in Resources */,
+				FB2E82591BEA5EB200C2AE10 /* Launch Screen.storyboard in Resources */,
 				FB9029B21BE72761003FC829 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

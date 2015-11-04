@@ -14,7 +14,7 @@
 
 @interface BoPhotoPickerViewController()<BoPhotoGroupViewProtocol,BoPhotoListProtocol>
 
-@property (nonatomic,weak) BoPhotoGroupView *photoGroupView;
+@property (weak, nonatomic) BoPhotoGroupView *photoGroupView;
 @property (weak, nonatomic) UILabel *titleLabel;
 @property (weak, nonatomic) UIView *navBar;
 @property (weak, nonatomic) UIView *bgMaskView;
@@ -27,7 +27,7 @@
 @implementation BoPhotoPickerViewController
 
 #pragma mark - init
-- (instancetype)init{
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.view.backgroundColor = [UIColor whiteColor];
@@ -42,7 +42,7 @@
 }
 
 #pragma mark - lifecycle
--(void)loadView{
+- (void)loadView {
     [super loadView];
     //加载控件
     //导航条
@@ -55,7 +55,7 @@
     [self setupGroupView];
 }
 
--(void)viewDidLoad{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     //没有相册访问权限通知
@@ -67,7 +67,7 @@
     [self setupData];
 }
 
--(void)dealloc{
+- (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     NSLog(@"%s",__func__);
 }
@@ -75,7 +75,7 @@
 
 #pragma mark - 界面初始化
 
--(void)setupNavBar{
+- (void)setupNavBar {
     //界面组件
     UIView *navBar = [[UIView alloc] init];
     navBar.backgroundColor = mRGBToColor(0xec4243);
@@ -152,7 +152,7 @@
     self.okBtn = okBtn;
 }
 
--(void)setupPhotoListView{
+- (void)setupPhotoListView {
     BoPhotoListView *collectionView = [[BoPhotoListView alloc] init];
     collectionView.my_delegate = self;
     [self.view insertSubview:collectionView atIndex:0];
@@ -166,7 +166,7 @@
 }
 
 
--(void)setupGroupView{
+- (void)setupGroupView {
     BoPhotoGroupView *photoGroupView = [[BoPhotoGroupView alloc] init];
     photoGroupView.assetsFilter = self.assetsFilter;
     photoGroupView.my_delegate = self;
@@ -181,13 +181,13 @@
     }];
 }
 
--(void)setupData{
+- (void)setupData {
     [self.photoGroupView setupGroup];
 }
 
 
 #pragma mark - 相册切换
--(void)selectGroupAction:(UIButton *)sender{
+- (void)selectGroupAction:(UIButton *)sender {
     //无权限
     if (self.isNotAllowed) {
         return;
@@ -204,7 +204,7 @@
     }
 }
 
--(void)hidenGroupView{
+- (void)hidenGroupView {
     [self.bgMaskView removeFromSuperview];
     [UIView animateWithDuration:0.3 animations:^{
         self.photoGroupView.transform = CGAffineTransformIdentity;
@@ -216,15 +216,14 @@
 
 
 #pragma mark - BoPhotoGroupViewProtocol
--(void)didSelectGroup:(ALAssetsGroup *)assetsGroup{
+- (void)didSelectGroup:(ALAssetsGroup *)assetsGroup {
     self.photoListView.assetsGroup = assetsGroup;
     self.titleLabel.text = [assetsGroup valueForProperty:ALAssetsGroupPropertyName];
     [self hidenGroupView];
-    
 }
 
 #pragma mark - BoPhotoListProtocol
--(void)tapAction:(ALAsset *)asset{
+- (void)tapAction:(ALAsset *)asset {
     if ([asset isKindOfClass:[UIImage class]] && _delegate && [_delegate respondsToSelector:@selector(photoPickerTapAction:)]) {
         [_delegate photoPickerTapAction:self];
     }
@@ -232,13 +231,13 @@
 
 
 #pragma mark - Action
--(void)cancelBtnAction:(UIButton *)sender{
+- (void)cancelBtnAction:(UIButton *)sender {
     if ([_delegate respondsToSelector:@selector(photoPickerDidCancel:)]) {
         [_delegate photoPickerDidCancel:self];
     }
 }
 
--(void)okBtnAction:(UIButton *)sender{
+- (void)okBtnAction:(UIButton *)sender {
     if (self.minimumNumberOfSelection > self.indexPathsForSelectedItems.count) {
         if (_delegate && [_delegate respondsToSelector:@selector(photoPickerDidMinimum:)]) {
             [_delegate photoPickerDidMinimum:self];
@@ -252,7 +251,7 @@
 
 
 #pragma mark - 遮罩背景
--(UIView *)bgMaskView{
+- (UIView *)bgMaskView {
     if (_bgMaskView == nil) {
         UIView *bgMaskView = [[UIView alloc] init];
         bgMaskView.alpha = 0.4;
@@ -271,36 +270,44 @@
     return _bgMaskView;
 }
 
--(void)tapBgMaskView:(UITapGestureRecognizer *)sender{
+- (void)tapBgMaskView:(UITapGestureRecognizer *)sender {
     if (!self.photoGroupView.hidden) {
         [self hidenGroupView];
     }
 }
 
 #pragma mark - 没有访问权限提示
--(void)showNotAllowed{
+- (void)showNotAllowed {
     //没有权限时隐藏部分控件
     self.isNotAllowed = YES;
     self.selectTip.hidden = YES;
     self.titleLabel.text = @"无权限访问相册";
     self.okBtn.hidden = YES;
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                    message:@"请先允许访问相册"
-                                                   delegate:self
-                                          cancelButtonTitle:@"取消"
-                                          otherButtonTitles:@"前往", nil];
+    UIAlertView *alert;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0) {
+        alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                           message:@"请在iPhone的“设置”-“隐私”-“照片”中，找到波波网更改"
+                                          delegate:nil
+                                 cancelButtonTitle:@"确定"
+                                 otherButtonTitles:nil, nil];
+    } else {
+        alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                           message:@"请先允许访问照片"
+                                          delegate:self
+                                 cancelButtonTitle:@"取消"
+                                 otherButtonTitles:@"前往", nil];
+    }
     [alert show];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
         [[UIApplication sharedApplication] openURL:[NSURL  URLWithString:UIApplicationOpenSettingsURLString]];
     }
 }
 
 #pragma mark - getter/setter
--(NSMutableArray *)indexPathsForSelectedItems{
+- (NSMutableArray *)indexPathsForSelectedItems {
     if (!_indexPathsForSelectedItems) {
         _indexPathsForSelectedItems = [[NSMutableArray alloc] init];
     }

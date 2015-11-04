@@ -17,13 +17,13 @@ static UIImage *checkedIcon;
 static UIColor *selectedColor;
 static UIColor *disabledColor;
 
-+ (void)initialize{
++ (void)initialize {
     checkedIcon = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"BoPhotoPicker.bundle/images/BoAssetsPickerChecked@2x.png"]];
     selectedColor = [UIColor colorWithWhite:1 alpha:0.3];
     disabledColor = [UIColor colorWithWhite:1 alpha:0.8];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
@@ -35,16 +35,16 @@ static UIColor *disabledColor;
     return self;
 }
 
--(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
     //执行触摸动画
     [self touchAnimation:touches];
     
     if (_disabled)
         return;
     
-    if (_delegate!=nil&&[_delegate respondsToSelector:@selector(shouldTap)]) {
-        if (![_delegate shouldTap]&&!_selected) {
+    if (_delegate!=nil && [_delegate respondsToSelector:@selector(shouldTap)]) {
+        if (![_delegate shouldTap] && !_selected) {
             if ([_delegate respondsToSelector:@selector(shouldTapAction)]) {
                 [_delegate shouldTapAction];
             }
@@ -55,7 +55,7 @@ static UIColor *disabledColor;
     if ((_selected = !_selected)) {
         self.backgroundColor = selectedColor;
         [_selectView setImage:checkedIcon];
-    }else{
+    } else {
         self.backgroundColor = [UIColor clearColor];
         [_selectView setImage:nil];
     }
@@ -64,7 +64,7 @@ static UIColor *disabledColor;
     }
 }
 
--(void)setDisabled:(BOOL)disabled{
+- (void)setDisabled:(BOOL)disabled {
     _disabled = disabled;
     if (_disabled) {
         self.backgroundColor = disabledColor;
@@ -73,7 +73,7 @@ static UIColor *disabledColor;
     }
 }
 
--(void)setSelected:(BOOL)selected{
+- (void)setSelected:(BOOL)selected {
     if (_disabled) {
         self.backgroundColor = disabledColor;
         [_selectView setImage:nil];
@@ -91,7 +91,7 @@ static UIColor *disabledColor;
 }
 
 //触摸动作的相关过程动画
--(void)touchAnimation:(NSSet<UITouch *> *)touches{
+- (void)touchAnimation:(NSSet<UITouch *> *)touches {
     UITouch *touch = [touches anyObject];
     CGPoint clickPoint = [touch locationInView:self];
     
@@ -118,8 +118,8 @@ static UIColor *disabledColor;
     group.duration = 0.4;
     [group setAnimations:@[zoom,fadeout]];
     group.delegate = self;
-    group.fillMode = kCAFillModeForwards;
-    group.removedOnCompletion = NO;
+    group.removedOnCompletion = YES;
     [clickLayer addAnimation:group forKey:nil];
 }
+
 @end

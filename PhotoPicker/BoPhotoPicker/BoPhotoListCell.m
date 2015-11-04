@@ -14,13 +14,12 @@
 @interface BoPhotoListCell()<BoTapAssetViewDelegate>
 @property (weak, nonatomic) UIImageView *imageView;
 @property (weak, nonatomic) BoTapAssetView *tapAssetView;
-@property (nonatomic, strong) ALAsset *asset;
+@property (strong, nonatomic) ALAsset *asset;
 @end
 
 @implementation BoPhotoListCell
 
-
--(void)bind:(ALAsset *)asset selectionFilter:(NSPredicate*)selectionFilter isSeleced:(BOOL)isSeleced{
+- (void)bind:(ALAsset *)asset selectionFilter:(NSPredicate*)selectionFilter isSeleced:(BOOL)isSeleced {
     self.asset = asset;
     if (self.imageView == nil) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
@@ -40,9 +39,9 @@
         self.tapAssetView = tapView;
     }
     
-    if([asset isKindOfClass:[UIImage class]]){
+    if ([asset isKindOfClass:[UIImage class]]) {
         [self.imageView setImage:(UIImage *)asset];
-    }else{
+    } else {
         [self.imageView setImage:[UIImage imageWithCGImage:asset.aspectRatioThumbnail]];
     }
     
@@ -51,26 +50,26 @@
 }
 
 #pragma mark - BoTapAssetViewDelegate
--(BOOL)shouldTap{
+- (BOOL)shouldTap {
     if (_delegate &&[_delegate respondsToSelector:@selector(shouldSelectAsset:)]) {
         return [_delegate shouldSelectAsset:_asset];
     }
     return YES;
 }
 
--(void)touchSelect:(BOOL)select{
+- (void)touchSelect:(BOOL)select {
     if (select) {
         if (_delegate &&[_delegate respondsToSelector:@selector(didSelectAsset:)]) {
             [_delegate didSelectAsset:_asset];
         }
-    }else{
+    } else {
         if (_delegate &&[_delegate respondsToSelector:@selector(didDeselectAsset:)]) {
             [_delegate didDeselectAsset:_asset];
         }
     }
 }
 
--(void)shouldTapAction{
+- (void)shouldTapAction {
     if (_delegate && [_delegate respondsToSelector:@selector(tapAction:)]) {
         [_delegate tapAction:_asset];
     }

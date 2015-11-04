@@ -20,7 +20,7 @@
 @implementation BoPhotoGroupView
 
 #pragma mark - init
--(instancetype)init{
+- (instancetype)init {
     self = [super init];
     if (self) {
         [self initCommon];
@@ -28,7 +28,7 @@
     return self;
 }
 
-- (instancetype)initWithCoder:(NSCoder *)coder{
+- (instancetype)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     if (self) {
         [self initCommon];
@@ -36,7 +36,7 @@
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame{
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         [self initCommon];
@@ -44,7 +44,7 @@
     return self;
 }
 
--(void)initCommon{
+- (void)initCommon {
     self.delegate = self;
     self.dataSource = self;
     [self registerClass:[BoPhotoGroupCell class] forCellReuseIdentifier:@"cell"];
@@ -53,7 +53,7 @@
 }
 
 //加载相册
--(void)setupGroup{
+- (void)setupGroup {
     [self.groups removeAllObjects];
     
     ALAssetsLibraryGroupsEnumerationResultsBlock resultsBlock = ^(ALAssetsGroup *group, BOOL *stop) {
@@ -62,13 +62,13 @@
             if (group.numberOfAssets > 0 || ((BoPhotoPickerViewController *)_my_delegate).showEmptyGroups){
                 if ([[group valueForProperty:ALAssetsGroupPropertyType] intValue]==ALAssetsGroupSavedPhotos){
                     [self.groups insertObject:group atIndex:0];
-                }else if ([[group valueForProperty:ALAssetsGroupPropertyType] intValue]==ALAssetsGroupPhotoStream && self.groups.count>0){
+                } else if ([[group valueForProperty:ALAssetsGroupPropertyType] intValue]==ALAssetsGroupPhotoStream && self.groups.count>0){
                     [self.groups insertObject:group atIndex:1];
-                }else{
+                } else {
                     [self.groups addObject:group];
                 }
             }
-        }else{
+        } else {
             [self dataReload];
         }
     };
@@ -89,7 +89,7 @@
 }
 
 #pragma mark - Reload Data
-- (void)dataReload{
+- (void)dataReload {
     if (self.groups.count == 0)
         //没有图片
         [self showNoAssets];
@@ -101,20 +101,20 @@
 }
 
 #pragma mark - Not allowed / No assets
-- (void)showNotAllowed{
+- (void)showNotAllowed {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"NotAllowedPhoto" object:nil];
     if ([_my_delegate respondsToSelector:@selector(didSelectGroup:)]) {
         [_my_delegate didSelectGroup:nil];
     }
 }
 
-- (void)showNoAssets{
+- (void)showNoAssets {
     NSLog(@"%s",__func__);
 }
 
 
 #pragma mark - uitableviewDelegate
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifer = @"cell";
     BoPhotoGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifer forIndexPath:indexPath];
     if(cell == nil){
@@ -128,15 +128,15 @@
     return cell;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.groups.count;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 60.0;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     self.selectIndex = indexPath.row;
     [self reloadData];
@@ -147,7 +147,7 @@
 }
 
 #pragma mark - getter/setter
--(NSMutableArray *)groups{
+- (NSMutableArray *)groups {
     if (!_groups) {
         _groups = [[NSMutableArray alloc] init];
     }
@@ -155,7 +155,7 @@
 }
 
 #pragma mark - ALAssetsLibrary
--(ALAssetsLibrary *)assetsLibrary{
+- (ALAssetsLibrary *)assetsLibrary {
     if (!_assetsLibrary) {
         static dispatch_once_t pred = 0;
         static ALAssetsLibrary *library = nil;
