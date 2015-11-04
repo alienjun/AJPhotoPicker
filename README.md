@@ -2,6 +2,9 @@
 用于发表图片时候选择相册图片和拍照这样的需求，虽然网上也有很多类似的控件，写的挺不错的，但是还是自己写了；只是改起来用到自己项目里面需要费点时间；再加上定制化，和后期考虑的一些需求。
 自己用起来非常简单，就几行代码+委托就可以了。要做定制化也比较容易，项目为了兼容iOS7，读取照片目前使用的还是AssetsLibrary。
 
+布局基本上都是基于Masonry实现，因为项目里面都在用它。
+
+
 ![Aaron Swartz](https://github.com/alienjun/PhotoPicker/blob/master/Screenshots/111.gif)
 
 ![Aaron Swartz](https://github.com/alienjun/PhotoPicker/blob/master/Screenshots/222.gif)
