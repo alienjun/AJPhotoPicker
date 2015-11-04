@@ -20,6 +20,7 @@
 @property (weak, nonatomic) UIView *bgMaskView;
 @property (weak, nonatomic) BoPhotoListView *photoListView;
 @property (weak, nonatomic) UIImageView *selectTip;
+@property (weak, nonatomic) UIButton *okBtn;
 @property (nonatomic) BOOL isNotAllowed;
 @end
 
@@ -31,11 +32,29 @@
     if (self) {
         self.view.backgroundColor = [UIColor whiteColor];
         self.automaticallyAdjustsScrollViewInsets = NO;
+        _maximumNumberOfSelection = 10;
+        _minimumNumberOfSelection = 0;
+        _assetsFilter = [ALAssetsFilter allAssets];
+        _showEmptyGroups = NO;
+        _selectionFilter = [NSPredicate predicateWithValue:YES];
     }
     return self;
 }
 
 #pragma mark - lifecycle
+-(void)loadView{
+    [super loadView];
+    //加载控件
+    //导航条
+    [self setupNavBar];
+    
+    //列表view
+    [self setupPhotoListView];
+    
+    //相册分组
+    [self setupGroupView];
+}
+
 -(void)viewDidLoad{
     [super viewDidLoad];
     
@@ -44,16 +63,9 @@
                                              selector:@selector(showNotAllowed)
                                                  name:@"NotAllowedPhoto"
                                                object:nil];
+    //数据初始化
+    [self setupData];
 }
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
-    [self setup];
-    
-    [self setupGroupView];
-}
-
 
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -62,29 +74,8 @@
 
 
 #pragma mark - 界面初始化
--(void)setup{
 
-    if (!self.multipleSelection) {
-        self.minimumNumberOfSelection = 1;
-        self.maximumNumberOfSelection = 1;
-    }else{
-        if (self.maximumNumberOfSelection == 0) {
-            self.maximumNumberOfSelection = 20;
-            self.minimumNumberOfSelection = 1;
-        }
-    }
-    
-    BoPhotoListView *collectionView = [[BoPhotoListView alloc] init];
-    collectionView.my_delegate = self;
-    [self.view addSubview:collectionView];
-    [collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(self.view);
-        make.top.mas_equalTo(self.view).offset(64);
-        make.bottom.mas_equalTo(self.view);
-        make.trailing.mas_equalTo(self.view);
-    }];
-    self.photoListView = collectionView;
-    
+-(void)setupNavBar{
     //界面组件
     UIView *navBar = [[UIView alloc] init];
     navBar.backgroundColor = mRGBToColor(0xec4243);
@@ -147,7 +138,7 @@
     
     //okBtn
     UIButton *okBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [okBtn setTitle:@"发布" forState:UIControlStateNormal];
+    [okBtn setTitle:@"确定" forState:UIControlStateNormal];
     [okBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [okBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     [okBtn addTarget:self action:@selector(okBtnAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -158,15 +149,26 @@
         make.top.mas_equalTo(navBar).offset(20);
         make.width.mas_equalTo(@60);
     }];
-    
+    self.okBtn = okBtn;
+}
+
+-(void)setupPhotoListView{
+    BoPhotoListView *collectionView = [[BoPhotoListView alloc] init];
+    collectionView.my_delegate = self;
+    [self.view insertSubview:collectionView atIndex:0];
+    [collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(self.view);
+        make.top.mas_equalTo(self.view).offset(64);
+        make.bottom.mas_equalTo(self.view);
+        make.trailing.mas_equalTo(self.view);
+    }];
+    self.photoListView = collectionView;
 }
 
 
-#pragma mark - 相册view
 -(void)setupGroupView{
     BoPhotoGroupView *photoGroupView = [[BoPhotoGroupView alloc] init];
     photoGroupView.assetsFilter = self.assetsFilter;
-    photoGroupView.showEmptyGroups = self.showEmptyGroups;
     photoGroupView.my_delegate = self;
     [self.view insertSubview:photoGroupView belowSubview:self.navBar];
     self.photoGroupView = photoGroupView;
@@ -177,10 +179,14 @@
         make.trailing.mas_equalTo(self.view);
         make.height.mas_equalTo(@360);
     }];
-    
-    [photoGroupView setupGroup];
 }
 
+-(void)setupData{
+    [self.photoGroupView setupGroup];
+}
+
+
+#pragma mark - 相册切换
 -(void)selectGroupAction:(UIButton *)sender{
     //无权限
     if (self.isNotAllowed) {
@@ -277,6 +283,7 @@
     self.isNotAllowed = YES;
     self.selectTip.hidden = YES;
     self.titleLabel.text = @"无权限访问相册";
+    self.okBtn.hidden = YES;
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
                                                     message:@"请先允许访问相册"

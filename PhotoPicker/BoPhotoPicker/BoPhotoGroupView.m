@@ -10,6 +10,7 @@
 #import "BoPhotoGroupCell.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "MacroDefine.h"
+#import "BoPhotoPickerViewController.h"
 
 @interface BoPhotoGroupView()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) ALAssetsLibrary *assetsLibrary;
@@ -49,7 +50,6 @@
     [self registerClass:[BoPhotoGroupCell class] forCellReuseIdentifier:@"cell"];
     self.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.backgroundColor = mRGBToColor(0xebebeb);
-    self.showEmptyGroups = YES;
 }
 
 //加载相册
@@ -59,7 +59,7 @@
     ALAssetsLibraryGroupsEnumerationResultsBlock resultsBlock = ^(ALAssetsGroup *group, BOOL *stop) {
         if (group){
             [group setAssetsFilter:self.assetsFilter];
-            if (group.numberOfAssets > 0 || self.showEmptyGroups){
+            if (group.numberOfAssets > 0 || ((BoPhotoPickerViewController *)_my_delegate).showEmptyGroups){
                 if ([[group valueForProperty:ALAssetsGroupPropertyType] intValue]==ALAssetsGroupSavedPhotos){
                     [self.groups insertObject:group atIndex:0];
                 }else if ([[group valueForProperty:ALAssetsGroupPropertyType] intValue]==ALAssetsGroupPhotoStream && self.groups.count>0){
@@ -103,6 +103,9 @@
 #pragma mark - Not allowed / No assets
 - (void)showNotAllowed{
     [[NSNotificationCenter defaultCenter] postNotificationName:@"NotAllowedPhoto" object:nil];
+    if ([_my_delegate respondsToSelector:@selector(didSelectGroup:)]) {
+        [_my_delegate didSelectGroup:nil];
+    }
 }
 
 - (void)showNoAssets{

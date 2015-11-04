@@ -29,7 +29,7 @@ static UIColor *disabledColor;
         self.backgroundColor = [UIColor clearColor];
         self.clipsToBounds = YES;
         
-        _selectView=[[UIImageView alloc] initWithFrame:CGRectMake(frame.size.width-checkedIcon.size.width-5, frame.size.height-checkedIcon.size.height-5, checkedIcon.size.width, checkedIcon.size.height)];
+        _selectView = [[UIImageView alloc] initWithFrame:CGRectMake(frame.size.width-checkedIcon.size.width-5, frame.size.height-checkedIcon.size.height-5, checkedIcon.size.width, checkedIcon.size.height)];
         [self addSubview:_selectView];
     }
     return self;
@@ -40,9 +40,8 @@ static UIColor *disabledColor;
     //执行触摸动画
     [self touchAnimation:touches];
     
-    if (_disabled) {
+    if (_disabled)
         return;
-    }
     
     if (_delegate!=nil&&[_delegate respondsToSelector:@selector(shouldTap)]) {
         if (![_delegate shouldTap]&&!_selected) {
@@ -53,40 +52,40 @@ static UIColor *disabledColor;
         }
     }
     
-    if ((_selected=!_selected)) {
-        self.backgroundColor=selectedColor;
+    if ((_selected = !_selected)) {
+        self.backgroundColor = selectedColor;
         [_selectView setImage:checkedIcon];
     }else{
-        self.backgroundColor=[UIColor clearColor];
+        self.backgroundColor = [UIColor clearColor];
         [_selectView setImage:nil];
     }
-    if (_delegate!=nil&&[_delegate respondsToSelector:@selector(touchSelect:)]) {
+    if (_delegate != nil && [_delegate respondsToSelector:@selector(touchSelect:)]) {
         [_delegate touchSelect:_selected];
     }
 }
 
 -(void)setDisabled:(BOOL)disabled{
-    _disabled=disabled;
+    _disabled = disabled;
     if (_disabled) {
-        self.backgroundColor=disabledColor;
+        self.backgroundColor = disabledColor;
     }else{
-        self.backgroundColor=[UIColor clearColor];
+        self.backgroundColor = [UIColor clearColor];
     }
 }
 
 -(void)setSelected:(BOOL)selected{
     if (_disabled) {
-        self.backgroundColor=disabledColor;
+        self.backgroundColor = disabledColor;
         [_selectView setImage:nil];
         return;
     }
     
-    _selected=selected;
+    _selected = selected;
     if (_selected) {
-        self.backgroundColor=selectedColor;
+        self.backgroundColor = selectedColor;
         [_selectView setImage:checkedIcon];
     }else{
-        self.backgroundColor=[UIColor clearColor];
+        self.backgroundColor = [UIColor clearColor];
         [_selectView setImage:nil];
     }
 }
@@ -110,13 +109,13 @@ static UIColor *disabledColor;
     zoom.duration = .4;
     
     CABasicAnimation *fadeout = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    fadeout.toValue=@0.0;
-    fadeout.duration=.4;
+    fadeout.toValue = @0.0;
+    fadeout.duration = .4;
     fadeout.fillMode = kCAFillModeForwards;
     fadeout.removedOnCompletion = NO;
     
-    CAAnimationGroup *group=[CAAnimationGroup animation];
-    group.duration=0.4;
+    CAAnimationGroup *group = [CAAnimationGroup animation];
+    group.duration = 0.4;
     [group setAnimations:@[zoom,fadeout]];
     group.delegate = self;
     group.fillMode = kCAFillModeForwards;

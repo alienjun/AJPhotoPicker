@@ -38,7 +38,7 @@
 
 - (IBAction)multipleBtnAction:(id)sender {
     BoPhotoPickerViewController *picker = [[BoPhotoPickerViewController alloc] init];
-    picker.maximumNumberOfSelection = 10;
+    picker.maximumNumberOfSelection = 5;
 //    self.picker.minimumNumberOfSelection = 1;
     picker.multipleSelection = YES;
     picker.assetsFilter = [ALAssetsFilter allPhotos];
@@ -72,6 +72,8 @@
             UIImage *tempImg=[UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage];
             frame.origin.x=x;
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
+            [imageView setContentMode:UIViewContentModeScaleAspectFill];
+            imageView.clipsToBounds = YES;
             imageView.image = tempImg;
             [self.multipleView addSubview:imageView];
             

@@ -22,7 +22,6 @@
 @property (weak, nonatomic) id<BoPhotoGroupViewProtocol> my_delegate;
 
 @property (nonatomic, strong) ALAssetsFilter *assetsFilter;
-@property (nonatomic, assign) BOOL showEmptyGroups;
 @property (nonatomic) NSInteger selectIndex;
 
 //显示
