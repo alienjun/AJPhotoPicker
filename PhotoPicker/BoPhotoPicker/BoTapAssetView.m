@@ -102,6 +102,7 @@ static UIColor *disabledColor;
     clickLayer.frame = CGRectMake(0, 0, 6, 6);
     clickLayer.position = clickPoint;
     clickLayer.opacity = 0.3;
+    clickLayer.name = @"clickLayer";
     [self.layer addSublayer:clickLayer];
     
     CABasicAnimation* zoom = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
@@ -111,15 +112,25 @@ static UIColor *disabledColor;
     CABasicAnimation *fadeout = [CABasicAnimation animationWithKeyPath:@"opacity"];
     fadeout.toValue = @0.0;
     fadeout.duration = .4;
-    fadeout.fillMode = kCAFillModeForwards;
-    fadeout.removedOnCompletion = NO;
     
     CAAnimationGroup *group = [CAAnimationGroup animation];
     group.duration = 0.4;
     [group setAnimations:@[zoom,fadeout]];
     group.delegate = self;
-    group.removedOnCompletion = YES;
-    [clickLayer addAnimation:group forKey:nil];
+    group.fillMode = kCAFillModeForwards;
+    group.removedOnCompletion = NO;
+    [clickLayer addAnimation:group forKey:@"animationKey"];
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    if (flag) {
+        for (int i = 0; i < self.layer.sublayers.count; i++) {
+            CALayer *obj = self.layer.sublayers[i];
+            if (obj.name != nil && [@"clickLayer" isEqualToString:obj.name] && [obj animationForKey:@"animationKey"] == anim) {
+                [obj removeFromSuperlayer];
+            }
+        }
+    }
 }
 
 @end
