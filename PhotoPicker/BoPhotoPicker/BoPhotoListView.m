@@ -43,15 +43,27 @@
 
 //加载图片
 - (void)setupAssets {
-    
     [self.indexPathsForSelectedItems removeAllObjects];
     [self.assets removeAllObjects];
-    [self.assets addObject:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"BoPhotoPicker.bundle/images/BoAssetsCamera@2x.png"]]];
+    
+    NSMutableArray *tempList = [[NSMutableArray alloc] init];
+    [tempList addObject:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"BoPhotoPicker.bundle/images/BoAssetsCamera@2x.png"]]];
     
     ALAssetsGroupEnumerationResultsBlock resultsBlock = ^(ALAsset *asset, NSUInteger index, BOOL *stop) {
         if (asset){
-            [self.assets addObject:asset];
-        }else if (self.assets.count > 0){
+            [tempList addObject:asset];
+        }else if (tempList.count > 0){
+            //排序
+            NSArray *sortedList = [tempList sortedArrayUsingComparator:^NSComparisonResult(ALAsset *first, ALAsset *second) {
+                if ([first isKindOfClass:[UIImage class]]) {
+                    return NSOrderedAscending;
+                }
+                id firstData = [first valueForProperty:ALAssetPropertyDate];
+                id secondData = [second valueForProperty:ALAssetPropertyDate];
+                return [secondData compare:firstData];//降序
+            }];
+            [self.assets addObjectsFromArray:sortedList];
+            
             [self scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
             [self reloadData];
         }
