@@ -11,7 +11,7 @@
 #import "BoTapAssetView.h"
 
 
-@interface BoPhotoListCell()<BoTapAssetViewDelegate>
+@interface BoPhotoListCell()
 @property (weak, nonatomic) UIImageView *imageView;
 @property (weak, nonatomic) BoTapAssetView *tapAssetView;
 @property (strong, nonatomic) ALAsset *asset;
@@ -34,7 +34,6 @@
     
     if (!self.tapAssetView) {
         BoTapAssetView *tapView = [[BoTapAssetView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
-        tapView.delegate = self;
         [self.contentView addSubview:tapView];
         self.tapAssetView = tapView;
     }
@@ -49,30 +48,8 @@
     _tapAssetView.selected = isSeleced;
 }
 
-#pragma mark - BoTapAssetViewDelegate
-- (BOOL)shouldTap {
-    if (_delegate &&[_delegate respondsToSelector:@selector(shouldSelectAsset:)]) {
-        return [_delegate shouldSelectAsset:_asset];
-    }
-    return YES;
-}
-
-- (void)touchSelect:(BOOL)select {
-    if (select) {
-        if (_delegate &&[_delegate respondsToSelector:@selector(didSelectAsset:)]) {
-            [_delegate didSelectAsset:_asset];
-        }
-    } else {
-        if (_delegate &&[_delegate respondsToSelector:@selector(didDeselectAsset:)]) {
-            [_delegate didDeselectAsset:_asset];
-        }
-    }
-}
-
-- (void)shouldTapAction {
-    if (_delegate && [_delegate respondsToSelector:@selector(tapAction:)]) {
-        [_delegate tapAction:_asset];
-    }
+- (void)isSeleced:(BOOL)isSeleced {
+    _tapAssetView.selected = isSeleced;
 }
 
 @end

@@ -17,6 +17,7 @@ static UIImage *checkedIcon;
 static UIColor *selectedColor;
 static UIColor *disabledColor;
 
+#pragma mark - init
 + (void)initialize {
     checkedIcon = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"BoPhotoPicker.bundle/images/BoAssetsPickerChecked@2x.png"]];
     selectedColor = [UIColor colorWithWhite:1 alpha:0.3];
@@ -35,35 +36,14 @@ static UIColor *disabledColor;
     return self;
 }
 
+#pragma mark - touch
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    
+    [self.nextResponder touchesEnded:touches withEvent:event];
     //执行触摸动画
     [self touchAnimation:touches];
-    
-    if (_disabled)
-        return;
-    
-    if (_delegate!=nil && [_delegate respondsToSelector:@selector(shouldTap)]) {
-        if (![_delegate shouldTap] && !_selected) {
-            if ([_delegate respondsToSelector:@selector(shouldTapAction)]) {
-                [_delegate shouldTapAction];
-            }
-            return;
-        }
-    }
-    
-    if ((_selected = !_selected)) {
-        self.backgroundColor = selectedColor;
-        [_selectView setImage:checkedIcon];
-    } else {
-        self.backgroundColor = [UIColor clearColor];
-        [_selectView setImage:nil];
-    }
-    if (_delegate != nil && [_delegate respondsToSelector:@selector(touchSelect:)]) {
-        [_delegate touchSelect:_selected];
-    }
 }
 
+#pragma mark - setter
 - (void)setDisabled:(BOOL)disabled {
     _disabled = disabled;
     if (_disabled) {

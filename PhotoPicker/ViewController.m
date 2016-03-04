@@ -38,7 +38,7 @@
 
 - (IBAction)multipleBtnAction:(id)sender {
     BoPhotoPickerViewController *picker = [[BoPhotoPickerViewController alloc] init];
-    picker.maximumNumberOfSelection = 5;
+    picker.maximumNumberOfSelection = 15;
     picker.multipleSelection = YES;
     picker.assetsFilter = [ALAssetsFilter allPhotos];
     picker.showEmptyGroups = YES;
@@ -97,7 +97,7 @@
     NSLog(@"%s",__func__);
 }
 
-- (void)photoPickerTapAction:(BoPhotoPickerViewController *)picker {
+- (void)photoPickerTapCameraAction:(BoPhotoPickerViewController *)picker {
     if(![self checkCameraAvailability]){
         NSLog(@"没有访问相机权限");
         return;

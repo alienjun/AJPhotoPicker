@@ -8,18 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class ALAssetsGroup;
-@class ALAsset;
-
-@protocol BoPhotoListProtocol <NSObject>
-
-- (void)tapAction:(ALAsset *)asset;
-
-@end
-
-
 @interface BoPhotoListView : UICollectionView
-@property (weak, nonatomic) id<BoPhotoListProtocol> my_delegate;
-@property (strong, nonatomic) ALAssetsGroup *assetsGroup;
 
 @end

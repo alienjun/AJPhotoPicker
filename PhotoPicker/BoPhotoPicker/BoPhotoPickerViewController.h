@@ -19,8 +19,8 @@
 
 - (void)photoPicker:(BoPhotoPickerViewController *)picker didDeselectAsset:(ALAsset*)asset;
 
-//相关操作
-- (void)photoPickerTapAction:(BoPhotoPickerViewController *)picker;
+//点击相机按钮相关操作
+- (void)photoPickerTapCameraAction:(BoPhotoPickerViewController *)picker;
 
 //取消
 - (void)photoPickerDidCancel:(BoPhotoPickerViewController *)picker;
@@ -30,6 +30,9 @@
 
 //低于最低选择项时
 - (void)photoPickerDidMinimum:(BoPhotoPickerViewController *)picker;
+
+//选择过滤
+- (void)photoPickerDidSelectionFilter:(BoPhotoPickerViewController *)picker;
 
 @end
 

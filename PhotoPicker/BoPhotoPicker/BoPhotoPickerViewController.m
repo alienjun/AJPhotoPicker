@@ -9,10 +9,11 @@
 #import "BoPhotoPickerViewController.h"
 #import "BoPhotoGroupView.h"
 #import "BoPhotoListView.h"
+#import "BoPhotoListCell.h"
 #import "Masonry.h"
 #import "MacroDefine.h"
 
-@interface BoPhotoPickerViewController()<BoPhotoGroupViewProtocol,BoPhotoListProtocol>
+@interface BoPhotoPickerViewController()<BoPhotoGroupViewProtocol,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) BoPhotoGroupView *photoGroupView;
 @property (weak, nonatomic) UILabel *titleLabel;
@@ -22,6 +23,8 @@
 @property (weak, nonatomic) UIImageView *selectTip;
 @property (weak, nonatomic) UIButton *okBtn;
 @property (nonatomic) BOOL isNotAllowed;
+@property (strong, nonatomic) NSMutableArray *assets;
+@property (strong, nonatomic) NSIndexPath *lastAccessed;
 @end
 
 @implementation BoPhotoPickerViewController
@@ -65,6 +68,11 @@
                                                object:nil];
     //数据初始化
     [self setupData];
+    
+    //滑动选中图片
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPanForSelection:)];
+    [self.view addGestureRecognizer:pan];
+
 }
 
 - (void)dealloc {
@@ -154,7 +162,8 @@
 
 - (void)setupPhotoListView {
     BoPhotoListView *collectionView = [[BoPhotoListView alloc] init];
-    collectionView.my_delegate = self;
+    collectionView.dataSource = self;
+    collectionView.delegate = self;
     [self.view insertSubview:collectionView atIndex:0];
     [collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(self.view);
@@ -217,20 +226,151 @@
 
 #pragma mark - BoPhotoGroupViewProtocol
 - (void)didSelectGroup:(ALAssetsGroup *)assetsGroup {
-    self.photoListView.assetsGroup = assetsGroup;
+    [self loadAssets:assetsGroup];
     self.titleLabel.text = [assetsGroup valueForProperty:ALAssetsGroupPropertyName];
     [self hidenGroupView];
 }
 
-#pragma mark - BoPhotoListProtocol
-- (void)tapAction:(ALAsset *)asset {
-    if ([asset isKindOfClass:[UIImage class]] && _delegate && [_delegate respondsToSelector:@selector(photoPickerTapAction:)]) {
-        [_delegate photoPickerTapAction:self];
+//加载图片
+- (void)loadAssets:(ALAssetsGroup *)assetsGroup {
+    [self.indexPathsForSelectedItems removeAllObjects];
+    [self.assets removeAllObjects];
+    
+    //相机cell
+    NSMutableArray *tempList = [[NSMutableArray alloc] init];
+    [tempList addObject:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"BoPhotoPicker.bundle/images/BoAssetsCamera@2x.png"]]];
+    
+    ALAssetsGroupEnumerationResultsBlock resultsBlock = ^(ALAsset *asset, NSUInteger index, BOOL *stop) {
+        if (asset) {
+            [tempList addObject:asset];
+        } else if (tempList.count > 0) {
+            //排序
+            NSArray *sortedList = [tempList sortedArrayUsingComparator:^NSComparisonResult(ALAsset *first, ALAsset *second) {
+                if ([first isKindOfClass:[UIImage class]]) {
+                    return NSOrderedAscending;
+                }
+                id firstData = [first valueForProperty:ALAssetPropertyDate];
+                id secondData = [second valueForProperty:ALAssetPropertyDate];
+                return [secondData compare:firstData];//降序
+            }];
+            [self.assets addObjectsFromArray:sortedList];
+            
+            [self.photoListView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+            [self.photoListView reloadData];
+        }
+    };
+    
+    [assetsGroup enumerateAssetsUsingBlock:resultsBlock];
+}
+
+#pragma mark - uicollectionDelegate
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.assets.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *cellIdentifer = @"cell";
+    BoPhotoListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifer forIndexPath:indexPath];
+    
+    BOOL isSeleced = [self.indexPathsForSelectedItems containsObject:self.assets[indexPath.row]];
+    [cell bind:self.assets[indexPath.row] selectionFilter:self.selectionFilter isSeleced:isSeleced];
+    return cell;
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    return UIEdgeInsetsMake(5, 5, 5, 5);
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat wh = (collectionView.bounds.size.width - 20)/3.0;
+    
+    return CGSizeMake(wh, wh);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 5.0;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 5.0;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    BoPhotoListCell *cell = (BoPhotoListCell *)[self.photoListView cellForItemAtIndexPath:indexPath];
+    ALAsset *asset = self.assets[indexPath.row];
+    
+    //相机按钮处理
+    if ([asset isKindOfClass:[UIImage class]] && _delegate && [_delegate respondsToSelector:@selector(photoPickerTapCameraAction:)]) {
+        [_delegate photoPickerTapCameraAction:self];
+        return;
     }
+    
+    //单选
+    if (!self.multipleSelection && self.indexPathsForSelectedItems.count==1) {
+        NSInteger index = [self.assets indexOfObject:self.indexPathsForSelectedItems[0]];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
+        [self.indexPathsForSelectedItems removeAllObjects];
+        [self.photoListView reloadItemsAtIndexPaths:@[indexPath]];
+        [self.indexPathsForSelectedItems addObject:asset];
+        [cell isSeleced:YES];
+        if (_delegate && [_delegate respondsToSelector:@selector(photoPicker:didDeselectAsset:)])
+            [_delegate photoPicker:self didDeselectAsset:asset];
+        return;
+    }
+    
+    //超出最大限制
+    if (self.indexPathsForSelectedItems.count >= self.maximumNumberOfSelection && ![self.indexPathsForSelectedItems containsObject:asset]) {
+        if (_delegate && [_delegate respondsToSelector:@selector(photoPickerDidMaximum:)]) {
+            [_delegate photoPickerDidMaximum:self];
+            return;
+        }
+    }
+    
+    //选择过滤
+    BOOL selectable = [self.selectionFilter evaluateWithObject:asset];
+    if (!selectable) {
+        if (_delegate && [_delegate respondsToSelector:@selector(photoPickerDidSelectionFilter:)]) {
+            [_delegate photoPickerDidSelectionFilter:self];
+            return;
+        }
+    }
+    
+    //多选
+    if ([self.indexPathsForSelectedItems containsObject:asset]) {
+        [self.indexPathsForSelectedItems removeObject:asset];
+        [cell isSeleced:NO];
+        if (_delegate && [_delegate respondsToSelector:@selector(photoPicker:didDeselectAsset:)])
+            [_delegate photoPicker:self didDeselectAsset:asset];
+        return;
+    }
+    
+    //选中
+    [self.indexPathsForSelectedItems addObject:asset];
+    [cell isSeleced:YES];
+    if (_delegate && [_delegate respondsToSelector:@selector(photoPicker:didSelectAsset:)])
+        [_delegate photoPicker:self didSelectAsset:asset];
 }
 
 
 #pragma mark - Action
+- (void)onPanForSelection:(UIPanGestureRecognizer *)gestureRecognizer {
+    CGPoint point = [gestureRecognizer locationInView:_photoListView];
+    
+    for (UICollectionViewCell *cell in _photoListView.visibleCells) {
+        if (CGRectContainsPoint(cell.frame, point)) {
+            NSIndexPath *indexPath = [_photoListView indexPathForCell:cell];
+            if (_lastAccessed != indexPath) {
+                [self collectionView:_photoListView didSelectItemAtIndexPath:indexPath];
+            }
+            _lastAccessed = indexPath;
+        }
+    }
+    
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        _lastAccessed = nil;
+    }
+}
+
 - (void)cancelBtnAction:(UIButton *)sender {
     if ([_delegate respondsToSelector:@selector(photoPickerDidCancel:)]) {
         [_delegate photoPickerDidCancel:self];
@@ -242,7 +382,7 @@
         if (_delegate && [_delegate respondsToSelector:@selector(photoPickerDidMinimum:)]) {
             [_delegate photoPickerDidMinimum:self];
         }
-    }else{
+    } else {
         if (_delegate && [_delegate respondsToSelector:@selector(photoPicker:didSelectAssets:)]) {
             [_delegate photoPicker:self didSelectAssets:self.indexPathsForSelectedItems];
         }
@@ -307,10 +447,18 @@
 }
 
 #pragma mark - getter/setter
+- (NSMutableArray *)assets {
+    if (!_assets) {
+        _assets = [[NSMutableArray alloc] init];
+    }
+    return _assets;
+}
+
 - (NSMutableArray *)indexPathsForSelectedItems {
     if (!_indexPathsForSelectedItems) {
         _indexPathsForSelectedItems = [[NSMutableArray alloc] init];
     }
     return _indexPathsForSelectedItems;
 }
+
 @end
