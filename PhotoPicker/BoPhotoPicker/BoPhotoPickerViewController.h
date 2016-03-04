@@ -11,7 +11,7 @@
 
 @class BoPhotoPickerViewController;
 @protocol BoPhotoPickerProtocol <NSObject>
-
+@optional
 //选择完成
 - (void)photoPicker:(BoPhotoPickerViewController *)picker didSelectAssets:(NSArray *)assets;
 
