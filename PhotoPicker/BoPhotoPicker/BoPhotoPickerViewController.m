@@ -10,8 +10,7 @@
 #import "BoPhotoGroupView.h"
 #import "BoPhotoListView.h"
 #import "BoPhotoListCell.h"
-#import "Masonry.h"
-#import "MacroDefine.h"
+
 
 @interface BoPhotoPickerViewController()<BoPhotoGroupViewProtocol,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 

@@ -30,8 +30,14 @@ static UIColor *disabledColor;
         self.backgroundColor = [UIColor clearColor];
         self.clipsToBounds = YES;
         
-        _selectView = [[UIImageView alloc] initWithFrame:CGRectMake(frame.size.width-checkedIcon.size.width-5, frame.size.height-checkedIcon.size.height-5, checkedIcon.size.width, checkedIcon.size.height)];
+        _selectView = [UIImageView new];
         [self addSubview:_selectView];
+        [_selectView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self).offset(-5);
+            make.height.equalTo(@(checkedIcon.size.height));
+            make.width.equalTo(@(checkedIcon.size.width));
+            make.bottom.equalTo(self).offset(-5);
+        }];
     }
     return self;
 }

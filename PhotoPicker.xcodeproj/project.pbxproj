@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB0711C41C8B1B9400B86FC2 /* AJGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0711C31C8B1B9400B86FC2 /* AJGradientView.m */; };
 		FB2E82591BEA5EB200C2AE10 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB2E82581BEA5EB200C2AE10 /* Launch Screen.storyboard */; };
 		FB6DF5131BE8F1D80043ED82 /* BoPhotoGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6DF5071BE8F1D80043ED82 /* BoPhotoGroupCell.m */; };
 		FB6DF5141BE8F1D80043ED82 /* BoPhotoGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6DF5091BE8F1D80043ED82 /* BoPhotoGroupView.m */; };
@@ -32,6 +33,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB0711C21C8B1B9400B86FC2 /* AJGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJGradientView.h; sourceTree = "<group>"; };
+		FB0711C31C8B1B9400B86FC2 /* AJGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJGradientView.m; sourceTree = "<group>"; };
+		FB0711C51C8B1E4000B86FC2 /* iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOS-Prefix.pch"; sourceTree = "<group>"; };
 		FB2E82581BEA5EB200C2AE10 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		FB6DF5061BE8F1D80043ED82 /* BoPhotoGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoPhotoGroupCell.h; sourceTree = "<group>"; };
 		FB6DF5071BE8F1D80043ED82 /* BoPhotoGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoPhotoGroupCell.m; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 		FB6DF5051BE8F1D80043ED82 /* BoPhotoPicker */ = {
 			isa = PBXGroup;
 			children = (
+				FB0711C21C8B1B9400B86FC2 /* AJGradientView.h */,
+				FB0711C31C8B1B9400B86FC2 /* AJGradientView.m */,
 				FB6DF50F1BE8F1D80043ED82 /* BoPhotoPickerViewController.h */,
 				FB6DF5101BE8F1D80043ED82 /* BoPhotoPickerViewController.m */,
 				FB6DF5081BE8F1D80043ED82 /* BoPhotoGroupView.h */,
@@ -145,6 +151,7 @@
 		FB9029A71BE72761003FC829 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FB0711C51C8B1E4000B86FC2 /* iOS-Prefix.pch */,
 				FB2E82581BEA5EB200C2AE10 /* Launch Screen.storyboard */,
 				FB9029CC1BE74548003FC829 /* Masonry */,
 				FB9029AA1BE72761003FC829 /* AppDelegate.h */,
@@ -262,6 +269,7 @@
 				FB6DF5161BE8F1D80043ED82 /* BoPhotoListView.m in Sources */,
 				FB6DF5131BE8F1D80043ED82 /* BoPhotoGroupCell.m in Sources */,
 				FB6DF5191BE8F1D80043ED82 /* BoTapAssetView.m in Sources */,
+				FB0711C41C8B1B9400B86FC2 /* AJGradientView.m in Sources */,
 				FB6DF5181BE8F1D80043ED82 /* BoPhotoPickerViewController.m in Sources */,
 				FB6DF5141BE8F1D80043ED82 /* BoPhotoGroupView.m in Sources */,
 				FB9029E61BE74548003FC829 /* MASConstraintMaker.m in Sources */,
@@ -377,6 +385,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PhotoPicker/iOS-Prefix.pch";
 				INFOPLIST_FILE = PhotoPicker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -391,6 +401,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PhotoPicker/iOS-Prefix.pch";
 				INFOPLIST_FILE = PhotoPicker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

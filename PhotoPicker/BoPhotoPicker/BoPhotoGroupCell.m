@@ -8,7 +8,6 @@
 
 #import "BoPhotoGroupCell.h"
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "MacroDefine.h"
 
 @interface BoPhotoGroupCell()
 @property (nonatomic, strong) ALAssetsGroup *assetsGroup;

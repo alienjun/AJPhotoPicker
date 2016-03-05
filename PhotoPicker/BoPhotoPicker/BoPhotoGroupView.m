@@ -9,7 +9,6 @@
 #import "BoPhotoGroupView.h"
 #import "BoPhotoGroupCell.h"
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "MacroDefine.h"
 #import "BoPhotoPickerViewController.h"
 
 @interface BoPhotoGroupView()<UITableViewDataSource,UITableViewDelegate>
