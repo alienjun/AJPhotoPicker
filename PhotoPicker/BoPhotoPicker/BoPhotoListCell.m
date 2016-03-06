@@ -23,12 +23,9 @@
 - (void)bind:(ALAsset *)asset selectionFilter:(NSPredicate*)selectionFilter isSeleced:(BOOL)isSeleced {
     self.asset = asset;
     if (self.imageView == nil) {
-        UIImageView *imageView = [UIImageView new];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
         [self.contentView addSubview:imageView];
         self.imageView = imageView;
-        [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.and.top.and.right.and.bottom.equalTo(self.contentView);
-        }];
         
         [self.imageView setContentMode:UIViewContentModeScaleAspectFill];
         self.imageView.layer.cornerRadius = 3;
@@ -37,12 +34,9 @@
     }
     
     if (!self.tapAssetView) {
-        BoTapAssetView *tapView = [BoTapAssetView new];
+        BoTapAssetView *tapView = [[BoTapAssetView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
         [self.contentView addSubview:tapView];
         self.tapAssetView = tapView;
-        [tapView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.and.top.and.right.and.bottom.equalTo(self.contentView);
-        }];
     }
     
     if ([asset isKindOfClass:[UIImage class]]) {
@@ -51,45 +45,31 @@
         [self.imageView setImage:[UIImage imageWithCGImage:asset.aspectRatioThumbnail]];
         if ([asset valueForProperty:ALAssetPropertyType] == ALAssetTypeVideo) {
             if (!self.gradientView) {
-                AJGradientView *gradientView = [AJGradientView new];
+                AJGradientView *gradientView = [[AJGradientView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
                 [self.contentView insertSubview:gradientView aboveSubview:self.imageView];
                 self.gradientView = gradientView;
                 [self.gradientView setupCAGradientLayer:@[(id)[[UIColor clearColor] colorWithAlphaComponent:0.0f].CGColor, (id)[[UIColor colorWithRed:23.0/255.0 green:22.0/255.0 blue:22.0/255.0 alpha:1.0] colorWithAlphaComponent:0.8f].CGColor] locations:@[@0.8f,@1.0f]];
-                [self.gradientView mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.leading.mas_equalTo(self.contentView);
-                    make.top.mas_equalTo(self.contentView);
-                    make.trailing.mas_equalTo(self.contentView);
-                    make.bottom.mas_equalTo(self.contentView);
-                }];
                 
                 //icon
-                UIImageView *videoIcon = [UIImageView new];
+                UIImageView *videoIcon = [[UIImageView alloc] initWithFrame:CGRectMake(5, self.bounds.size.height-15, 15, 8)];
                 videoIcon.image = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"BoPhotoPicker.bundle/images/AssetsPickerVideo@2x.png"]];
                 [self.gradientView addSubview:videoIcon];
-                [videoIcon mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.bottom.equalTo(self.gradientView).offset(-7);
-                    make.width.mas_equalTo(@15);
-                    make.height.mas_equalTo(@8);
-                    make.leading.mas_equalTo(self.gradientView).offset(5);
-                }];
                 
                 //duration
-                UILabel *duration = [UILabel new];
+                UILabel *duration = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(videoIcon.frame), self.bounds.size.height-17, self.bounds.size.width-CGRectGetMaxX(videoIcon.frame)-5, 12)];
                 duration.font = [UIFont systemFontOfSize:12];
                 duration.textColor = [UIColor whiteColor];
+                duration.textAlignment = NSTextAlignmentRight;
+                duration.autoresizingMask = UIViewAutoresizingFlexibleWidth;
                 [self.gradientView addSubview:duration];
-                [duration mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.bottom.equalTo(self.gradientView).offset(-5);
-                    make.height.mas_equalTo(@12);
-                    make.trailing.mas_equalTo(self.gradientView).offset(-5);
-                }];
+                
                 double value = [[asset valueForProperty:ALAssetPropertyDuration] doubleValue];
                 duration.text = [self timeFormatted:value];
             }
         } else {
             [self.gradientView removeFromSuperview];
         }
-
+        
     }
     
     _tapAssetView.disabled =! [selectionFilter evaluateWithObject:asset];
@@ -115,6 +95,5 @@
         return [NSString stringWithFormat:@"%02d:%02d", minute, second];
     }
 }
-
 
 @end
