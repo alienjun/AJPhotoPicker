@@ -306,10 +306,14 @@
     
     //单选
     if (!self.multipleSelection && self.indexPathsForSelectedItems.count==1) {
+        //取消上一个选中
         NSInteger index = [self.assets indexOfObject:self.indexPathsForSelectedItems[0]];
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
+        BoPhotoListCell *previousCell = (BoPhotoListCell *)[self.photoListView cellForItemAtIndexPath:indexPath];
+        [previousCell isSeleced:NO];
         [self.indexPathsForSelectedItems removeAllObjects];
-        [self.photoListView reloadItemsAtIndexPaths:@[indexPath]];
+        
+        //选中当前的
         [self.indexPathsForSelectedItems addObject:asset];
         [cell isSeleced:YES];
         if (_delegate && [_delegate respondsToSelector:@selector(photoPicker:didDeselectAsset:)])
@@ -334,7 +338,7 @@
         }
     }
     
-    //多选
+    //取消选中
     if ([self.indexPathsForSelectedItems containsObject:asset]) {
         [self.indexPathsForSelectedItems removeObject:asset];
         [cell isSeleced:NO];
