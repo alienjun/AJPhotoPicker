@@ -35,7 +35,6 @@
     [self presentViewController:picker animated:YES completion:nil];
 }
 
-
 - (IBAction)multipleBtnAction:(id)sender {
     BoPhotoPickerViewController *picker = [[BoPhotoPickerViewController alloc] init];
     picker.maximumNumberOfSelection = 15;
@@ -46,10 +45,8 @@
     picker.selectionFilter = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         return YES;
     }];
-    
     [self presentViewController:picker animated:YES completion:nil];
 }
-
 
 #pragma mark - BoPhotoPickerProtocol
 - (void)photoPickerDidCancel:(BoPhotoPickerViewController *)picker {
@@ -57,23 +54,23 @@
 }
 
 - (void)photoPicker:(BoPhotoPickerViewController *)picker didSelectAssets:(NSArray *)assets {
-    if (assets.count==1 ) {
-        ALAsset *asset=assets[0];
-        UIImage *tempImg=[UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage];
+    if (assets.count == 1) {
+        ALAsset *asset = assets[0];
+        UIImage *tempImg = [UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage];
         self.imageView.image = tempImg;
     } else {
         CGFloat x = 0;
         CGRect frame = CGRectMake(0, 0, 50, 50);
-        for (int i =0 ; i< assets.count; i++) {
-            ALAsset *asset=assets[i];
-            UIImage *tempImg=[UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage];
-            frame.origin.x=x;
+        for (int i = 0 ; i < assets.count; i++) {
+            ALAsset *asset = assets[i];
+            UIImage *tempImg = [UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage];
+            frame.origin.x = x;
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
             [imageView setContentMode:UIViewContentModeScaleAspectFill];
             imageView.clipsToBounds = YES;
             imageView.image = tempImg;
             [self.multipleView addSubview:imageView];
-            x+= frame.size.width+5;
+            x += frame.size.width+5;
         }
     }
     [picker dismissViewControllerAnimated:YES completion:nil];
@@ -98,23 +95,26 @@
 }
 
 - (void)photoPickerTapCameraAction:(BoPhotoPickerViewController *)picker {
-    if(![self checkCameraAvailability]){
-        NSLog(@"没有访问相机权限");
-        return;
-    }
-    [picker dismissViewControllerAnimated:NO completion:nil];
-    UIImagePickerController *cameraUI = [UIImagePickerController new];
-    cameraUI.allowsEditing = NO;
-    cameraUI.delegate = self;
-    cameraUI.sourceType = UIImagePickerControllerSourceTypeCamera;
-    cameraUI.cameraFlashMode=UIImagePickerControllerCameraFlashModeAuto;
-    
-    [self presentViewController: cameraUI animated: YES completion:nil];
+    [self checkCameraAvailability:^(BOOL auth) {
+        if (!auth) {
+            NSLog(@"没有访问相机权限");
+            return;
+        }
+        
+        [picker dismissViewControllerAnimated:NO completion:nil];
+        UIImagePickerController *cameraUI = [UIImagePickerController new];
+        cameraUI.allowsEditing = NO;
+        cameraUI.delegate = self;
+        cameraUI.sourceType = UIImagePickerControllerSourceTypeCamera;
+        cameraUI.cameraFlashMode=UIImagePickerControllerCameraFlashModeAuto;
+        
+        [self presentViewController: cameraUI animated: YES completion:nil];
+    }];
 }
 
 
 #pragma mark - UIImagePickerDelegate
-- (void) imagePickerControllerDidCancel: (UIImagePickerController *) picker {
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *) picker {
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -141,8 +141,7 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
-
-- (BOOL)checkCameraAvailability {
+- (void)checkCameraAvailability:(void (^)(BOOL auth))block {
     BOOL status = NO;
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if(authStatus == AVAuthorizationStatusAuthorized) {
@@ -152,9 +151,22 @@
     } else if (authStatus == AVAuthorizationStatusRestricted) {
         status = NO;
     } else if (authStatus == AVAuthorizationStatusNotDetermined) {
-        status = NO;
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+            if(granted){
+                if (block) {
+                    block(granted);
+                }
+            } else {
+                if (block) {
+                    block(granted);
+                }
+            }
+        }];
+        return;
     }
-    return status;
+    if (block) {
+        block(status);
+    }
 }
 
 @end
