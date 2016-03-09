@@ -24,7 +24,6 @@
 用法
 ==============
 ###弹出图片选择控件
-```
     BoPhotoPickerViewController *picker = [[BoPhotoPickerViewController alloc] init];
     //最大可选项
     picker.maximumNumberOfSelection = 5;
@@ -43,12 +42,8 @@
     
     [self presentViewController:picker animated:YES completion:nil];
 
-```
-
 
 ###实现委托
-```
-
 	//选择完成
 	- (void)photoPicker:(BoPhotoPickerViewController *)picker didSelectAssets:(NSArray *)assets;
 	
@@ -72,8 +67,6 @@
 
 	//选择过滤
 	- (void)photoPickerDidSelectionFilter:(BoPhotoPickerViewController *)picker;
-
-```
 
 安装
 ==============
