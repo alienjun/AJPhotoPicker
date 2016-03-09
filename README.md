@@ -1,28 +1,42 @@
-#PhotoPicker
-2016-03-05 
-添加滑动多选
-
-用于发表图片时候选择相册图片和拍照这样的需求，虽然网上也有很多类似的控件，写的挺不错的，但是深入使用就有些问题，还是自己写算了；网上的一些轮子看起来好像能用，但深入之后总是没那么完善需要改了各种测试，用到自己项目里面需要费点时间；再加上定制化和兼容问题，和后期考虑的一些需求，就更应该自己开个坑了。
-
-目前这个控件自己用起来非常简单，就几行代码+委托就可以了。要做定制化也比较容易，项目为了兼容iOS7，读取照片使用AssetsLibrary。
-
-布局基本上都是基于Masonry实现，因为项目里面都在用它。
-
-
+<br/><br/>
+---
+介绍
+==============
+基于AssetsLibrary的照片选取器。<br/>
 ![Aaron Swartz](https://github.com/alienjun/PhotoPicker/blob/master/Screenshots/111.gif)
-
 ![Aaron Swartz](https://github.com/alienjun/PhotoPicker/blob/master/Screenshots/222.gif)
-
 ![Aaron Swartz](https://github.com/alienjun/PhotoPicker/blob/master/Screenshots/333.gif)
 
-####使用方式：
+描述
+==============
+用于代替系统的图片选择器的控件，基于AssetsLibrary方便定制自己的需求，使用UICollectionView进行图片展示；网上也有一些做的很不错的类似控件，而大多数实现过于复杂不方便自己定制，在试用了几款后决定自己写这个控件；目前已经添加了几个自己需要的功能，同时控件在集成使用时也相对简单，几行代码+委托就可以了。在布局上使用autolayout基于Masonry。
+
+
+特性
+==============
+- 基于AssetsLibrary、UICollectionView、Masonry。
+- 支持 视频、图片选择。
+- 支持多选、滑动多选、预览。
+- 使用方式简单，便于定制。
+
+
+
+用法
+==============
+###弹出图片选择控件
 ```
     BoPhotoPickerViewController *picker = [[BoPhotoPickerViewController alloc] init];
+    //最大可选项
     picker.maximumNumberOfSelection = 5;
+    //是否多选
     picker.multipleSelection = YES;
+    //资源过滤
     picker.assetsFilter = [ALAssetsFilter allPhotos];
+    //是否显示空的相册
     picker.showEmptyGroups = YES;
-    picker.delegate=self;
+    //委托（必须）
+    picker.delegate = self;
+    //可选过滤
     picker.selectionFilter = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         return YES;
     }];
@@ -31,43 +45,61 @@
 
 ```
 
-委托：
-```
-#pragma mark - BoPhotoPickerProtocol
--(void)photoPickerDidCancel:(BoPhotoPickerViewController *)picker{
-    [picker dismissViewControllerAnimated:YES completion:nil];
-}
 
--(void)photoPicker:(BoPhotoPickerViewController *)picker didSelectAssets:(NSArray *)assets{
-}
-
--(void)photoPicker:(BoPhotoPickerViewController *)picker didSelectAsset:(ALAsset *)asset{
-    NSLog(@"%s",__func__);
-}
-
--(void)photoPicker:(BoPhotoPickerViewController *)picker didDeselectAsset:(ALAsset *)asset{
-    NSLog(@"%s",__func__);
-}
-
--(void)photoPickerDidMaximum:(BoPhotoPickerViewController *)picker{
-    NSLog(@"%s",__func__);
-}
-
--(void)photoPickerDidMinimum:(BoPhotoPickerViewController *)picker{
-    NSLog(@"%s",__func__);
-}
-
--(void)photoPickerTapAction:(BoPhotoPickerViewController *)picker{
-}
+###实现委托
 ```
 
-详细使用见Demo。
+	//选择完成
+	- (void)photoPicker:(BoPhotoPickerViewController *)picker didSelectAssets:(NSArray *)assets;
+	
+	//点击选中
+	- (void)photoPicker:(BoPhotoPickerViewController *)picker didSelectAsset:(ALAsset*)asset;
+	
+	//取消选中
+	- (void)photoPicker:(BoPhotoPickerViewController *)picker didDeselectAsset:(ALAsset*)asset;
+
+	//点击相机按钮相关操作
+	- (void)photoPickerTapCameraAction:(BoPhotoPickerViewController *)picker;
+
+	//取消
+	- (void)photoPickerDidCancel:(BoPhotoPickerViewController *)picker;
+
+	//超过最大选择项时
+	- (void)photoPickerDidMaximum:(BoPhotoPickerViewController *)picker;
+
+	//低于最低选择项时
+	- (void)photoPickerDidMinimum:(BoPhotoPickerViewController *)picker;
+
+	//选择过滤
+	- (void)photoPickerDidSelectionFilter:(BoPhotoPickerViewController *)picker;
+
+```
+
+安装
+==============
+### 手动安装
+
+1. 下载 AJPhotoPicker 文件夹内的所有内容。
+2. 将 AJPhotoPicker 内的源文件添加(拖放)到你的工程。
+3. 链接以下 frameworks:
+	* UIKit
+	* CoreFoundation
+	* QuartzCore
+	* AssetsLibrary
+	* MobileCoreServices
+	
+4. 导入 `BoPhotoPickerViewController.h`。
 
 
-欢迎一起交流技术。
 
-微博：[AlienJunX](http://weibo.com/alienjunx)
+系统要求
+==============
+该项目最低支持 `iOS 7.0` 和 `Xcode 7.0`。
 
-##License
 
-This project is under MIT License. See LICENSE file for more information.
+许可证
+==============
+AJPhotoPicker 使用 MIT 许可证，详情见 LICENSE 文件。
+
+
+
