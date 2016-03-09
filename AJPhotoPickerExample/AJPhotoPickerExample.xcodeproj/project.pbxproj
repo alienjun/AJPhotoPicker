@@ -30,6 +30,10 @@
 		FB0712F41C9053EC00B86FC2 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0712DF1C9053EC00B86FC2 /* NSArray+MASAdditions.m */; };
 		FB0712F51C9053EC00B86FC2 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0712E21C9053EC00B86FC2 /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		FB0712F61C9053EC00B86FC2 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0712E41C9053EC00B86FC2 /* View+MASAdditions.m */; };
+		FB0713001C90575300B86FC2 /* AJPhotoBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0712F91C90575300B86FC2 /* AJPhotoBrowserViewController.m */; };
+		FB0713011C90575300B86FC2 /* AJPhotoTapDetectingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0712FB1C90575300B86FC2 /* AJPhotoTapDetectingImageView.m */; };
+		FB0713021C90575300B86FC2 /* AJPhotoZoomingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0712FD1C90575300B86FC2 /* AJPhotoZoomingScrollView.m */; };
+		FB0713031C90575300B86FC2 /* AJTapDetectingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0712FF1C90575300B86FC2 /* AJTapDetectingView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +86,14 @@
 		FB0712E31C9053EC00B86FC2 /* View+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
 		FB0712E41C9053EC00B86FC2 /* View+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
 		FB0712E51C9053EC00B86FC2 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		FB0712F81C90575300B86FC2 /* AJPhotoBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJPhotoBrowserViewController.h; sourceTree = "<group>"; };
+		FB0712F91C90575300B86FC2 /* AJPhotoBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJPhotoBrowserViewController.m; sourceTree = "<group>"; };
+		FB0712FA1C90575300B86FC2 /* AJPhotoTapDetectingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJPhotoTapDetectingImageView.h; sourceTree = "<group>"; };
+		FB0712FB1C90575300B86FC2 /* AJPhotoTapDetectingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJPhotoTapDetectingImageView.m; sourceTree = "<group>"; };
+		FB0712FC1C90575300B86FC2 /* AJPhotoZoomingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJPhotoZoomingScrollView.h; sourceTree = "<group>"; };
+		FB0712FD1C90575300B86FC2 /* AJPhotoZoomingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJPhotoZoomingScrollView.m; sourceTree = "<group>"; };
+		FB0712FE1C90575300B86FC2 /* AJTapDetectingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJTapDetectingView.h; sourceTree = "<group>"; };
+		FB0712FF1C90575300B86FC2 /* AJTapDetectingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJTapDetectingView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +110,7 @@
 		FB07122F1C90478100B86FC2 = {
 			isa = PBXGroup;
 			children = (
+				FB0712F71C90575300B86FC2 /* AJPhotoBrowser */,
 				FB0712BD1C9053EC00B86FC2 /* AJPhotoPicker */,
 				FB07123A1C90478100B86FC2 /* AJPhotoPickerExample */,
 				FB0712391C90478100B86FC2 /* Products */,
@@ -115,14 +128,10 @@
 		FB07123A1C90478100B86FC2 /* AJPhotoPickerExample */ = {
 			isa = PBXGroup;
 			children = (
-				FB07123E1C90478100B86FC2 /* AppDelegate.h */,
-				FB07123F1C90478100B86FC2 /* AppDelegate.m */,
 				FB0712411C90478100B86FC2 /* ViewController.h */,
 				FB0712421C90478100B86FC2 /* ViewController.m */,
 				FB0712441C90478100B86FC2 /* Main.storyboard */,
 				FB0712471C90478100B86FC2 /* Assets.xcassets */,
-				FB0712491C90478100B86FC2 /* LaunchScreen.storyboard */,
-				FB07124C1C90478100B86FC2 /* Info.plist */,
 				FB07123B1C90478100B86FC2 /* Supporting Files */,
 			);
 			path = AJPhotoPickerExample;
@@ -131,6 +140,10 @@
 		FB07123B1C90478100B86FC2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FB07124C1C90478100B86FC2 /* Info.plist */,
+				FB0712491C90478100B86FC2 /* LaunchScreen.storyboard */,
+				FB07123E1C90478100B86FC2 /* AppDelegate.h */,
+				FB07123F1C90478100B86FC2 /* AppDelegate.m */,
 				FB0712A41C904A7300B86FC2 /* MacroDefine.h */,
 				FB07123C1C90478100B86FC2 /* main.m */,
 			);
@@ -197,6 +210,22 @@
 				FB0712E51C9053EC00B86FC2 /* View+MASShorthandAdditions.h */,
 			);
 			path = Masonry;
+			sourceTree = "<group>";
+		};
+		FB0712F71C90575300B86FC2 /* AJPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				FB0712F81C90575300B86FC2 /* AJPhotoBrowserViewController.h */,
+				FB0712F91C90575300B86FC2 /* AJPhotoBrowserViewController.m */,
+				FB0712FA1C90575300B86FC2 /* AJPhotoTapDetectingImageView.h */,
+				FB0712FB1C90575300B86FC2 /* AJPhotoTapDetectingImageView.m */,
+				FB0712FC1C90575300B86FC2 /* AJPhotoZoomingScrollView.h */,
+				FB0712FD1C90575300B86FC2 /* AJPhotoZoomingScrollView.m */,
+				FB0712FE1C90575300B86FC2 /* AJTapDetectingView.h */,
+				FB0712FF1C90575300B86FC2 /* AJTapDetectingView.m */,
+			);
+			name = AJPhotoBrowser;
+			path = ../AJPhotoBrowser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,7 +304,11 @@
 				FB0712EB1C9053EC00B86FC2 /* AJPhotoListView.m in Sources */,
 				FB0712401C90478100B86FC2 /* AppDelegate.m in Sources */,
 				FB0712E91C9053EC00B86FC2 /* AJPhotoListCell.m in Sources */,
+				FB0713001C90575300B86FC2 /* AJPhotoBrowserViewController.m in Sources */,
 				FB0712E81C9053EC00B86FC2 /* AJPhotoGroupView.m in Sources */,
+				FB0713021C90575300B86FC2 /* AJPhotoZoomingScrollView.m in Sources */,
+				FB0713031C90575300B86FC2 /* AJTapDetectingView.m in Sources */,
+				FB0713011C90575300B86FC2 /* AJPhotoTapDetectingImageView.m in Sources */,
 				FB0712F21C9053EC00B86FC2 /* MASViewAttribute.m in Sources */,
 				FB0712EE1C9053EC00B86FC2 /* MASCompositeConstraint.m in Sources */,
 				FB0712EA1C9053EC00B86FC2 /* AJPhotoListCellTapView.m in Sources */,

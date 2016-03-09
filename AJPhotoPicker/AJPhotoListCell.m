@@ -23,13 +23,6 @@
 
 @implementation AJPhotoListCell
 
-/**
- *  显示照片
- *
- *  @param asset           照片
- *  @param selectionFilter 过滤器
- *  @param isSelected YES选中，NO取消选中
- */
 - (void)bind:(ALAsset *)asset selectionFilter:(NSPredicate*)selectionFilter isSelected:(BOOL)isSelected {
     self.asset = asset;
     if (self.imageView == nil) {
@@ -85,11 +78,6 @@
     _tapAssetView.selected = isSelected;
 }
 
-/**
- *  选中
- *
- *  @param isSelected YES选中，NO取消选中
- */
 - (void)isSelected:(BOOL)isSelected {
     _tapAssetView.selected = isSelected;
 }

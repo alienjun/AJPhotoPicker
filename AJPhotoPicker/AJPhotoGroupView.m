@@ -51,9 +51,6 @@
     self.backgroundColor = [UIColor colorWithRed:235.0/255.0 green:235.0/255.0 blue:235.0/255.0 alpha:1.0];
 }
 
-/**
- *  加载并显示相册
- */
 - (void)setupGroup {
     [self.groups removeAllObjects];
     

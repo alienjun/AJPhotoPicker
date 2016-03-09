@@ -21,11 +21,6 @@
 
 @implementation AJPhotoGroupCell
 
-/**
- *  显示相册信息
- *
- *  @param assetsGroup 相册
- */
 - (void)bind:(ALAssetsGroup *)assetsGroup{
     self.assetsGroup = assetsGroup;
     self.backgroundColor = [UIColor colorWithRed:235.0/255.0 green:235.0/255.0 blue:235.0/255.0 alpha:1.0];

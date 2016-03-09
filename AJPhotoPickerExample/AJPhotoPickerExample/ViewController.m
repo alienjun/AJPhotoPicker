@@ -10,8 +10,9 @@
 #import "AJPhotoPickerViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "AJPhotoBrowserViewController.h"
 
-@interface ViewController ()<AJPhotoPickerProtocol,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface ViewController ()<AJPhotoPickerProtocol,AJPhotoBrowserDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIView *multipleView;
 
@@ -55,7 +56,7 @@
 }
 
 - (void)photoPicker:(AJPhotoPickerViewController *)picker didSelectAssets:(NSArray *)assets {
-    if (assets.count == 1) {
+    /*if (assets.count == 1) {
         ALAsset *asset = assets[0];
         UIImage *tempImg = [UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage];
         self.imageView.image = tempImg;
@@ -73,8 +74,14 @@
             [self.multipleView addSubview:imageView];
             x += frame.size.width+5;
         }
-    }
-    [picker dismissViewControllerAnimated:YES completion:nil];
+    }*/
+    [picker dismissViewControllerAnimated:NO completion:nil];
+    
+    //显示预览
+    AJPhotoBrowserViewController *photoBrowserViewController = [[AJPhotoBrowserViewController alloc] initWithPhotos:assets];
+    photoBrowserViewController.delegate = self;
+    [self presentViewController:photoBrowserViewController animated:YES completion:nil];
+    
 }
 
 - (void)photoPicker:(AJPhotoPickerViewController *)picker didSelectAsset:(ALAsset *)asset {
@@ -113,6 +120,36 @@
     }];
 }
 
+#pragma mark - AJPhotoBrowserDelegate
+
+- (void)photoBrowser:(AJPhotoBrowserViewController *)vc deleteWithIndex:(NSInteger)index {
+    NSLog(@"%s",__func__);
+}
+
+- (void)photoBrowser:(AJPhotoBrowserViewController *)vc didDonePhotos:(NSArray *)photos {
+    NSLog(@"%s",__func__);
+    
+    if (photos.count == 1) {
+        ALAsset *asset = photos[0];
+        UIImage *tempImg = [UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage];
+        self.imageView.image = tempImg;
+     } else {
+         CGFloat x = 0;
+         CGRect frame = CGRectMake(0, 0, 50, 50);
+         for (int i = 0 ; i < photos.count; i++) {
+             ALAsset *asset = photos[i];
+             UIImage *tempImg = [UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage];
+             frame.origin.x = x;
+             UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
+             [imageView setContentMode:UIViewContentModeScaleAspectFill];
+             imageView.clipsToBounds = YES;
+             imageView.image = tempImg;
+             [self.multipleView addSubview:imageView];
+             x += frame.size.width+5;
+         }
+     }
+    [vc dismissViewControllerAnimated:YES completion:nil];
+}
 
 #pragma mark - UIImagePickerDelegate
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *) picker {
