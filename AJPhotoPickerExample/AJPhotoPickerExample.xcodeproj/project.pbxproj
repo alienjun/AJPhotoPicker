@@ -1,0 +1,445 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FB07123D1C90478100B86FC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FB07123C1C90478100B86FC2 /* main.m */; };
+		FB0712401C90478100B86FC2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FB07123F1C90478100B86FC2 /* AppDelegate.m */; };
+		FB0712431C90478100B86FC2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0712421C90478100B86FC2 /* ViewController.m */; };
+		FB0712461C90478100B86FC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB0712441C90478100B86FC2 /* Main.storyboard */; };
+		FB0712481C90478100B86FC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB0712471C90478100B86FC2 /* Assets.xcassets */; };
+		FB07124B1C90478100B86FC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB0712491C90478100B86FC2 /* LaunchScreen.storyboard */; };
+		FB0712E61C9053EC00B86FC2 /* AJGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0712BF1C9053EC00B86FC2 /* AJGradientView.m */; };
+		FB0712E71C9053EC00B86FC2 /* AJPhotoGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0712C11C9053EC00B86FC2 /* AJPhotoGroupCell.m */; };
+		FB0712E81C9053EC00B86FC2 /* AJPhotoGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0712C31C9053EC00B86FC2 /* AJPhotoGroupView.m */; };
+		FB0712E91C9053EC00B86FC2 /* AJPhotoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0712C51C9053EC00B86FC2 /* AJPhotoListCell.m */; };
+		FB0712EA1C9053EC00B86FC2 /* AJPhotoListCellTapView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0712C71C9053EC00B86FC2 /* AJPhotoListCellTapView.m */; };
+		FB0712EB1C9053EC00B86FC2 /* AJPhotoListView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0712C91C9053EC00B86FC2 /* AJPhotoListView.m */; };
+		FB0712EC1C9053EC00B86FC2 /* AJPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0712CB1C9053EC00B86FC2 /* AJPhotoPickerViewController.m */; };
+		FB0712ED1C9053EC00B86FC2 /* BoPhotoPicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FB0712CC1C9053EC00B86FC2 /* BoPhotoPicker.bundle */; };
+		FB0712EE1C9053EC00B86FC2 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0712D01C9053EC00B86FC2 /* MASCompositeConstraint.m */; };
+		FB0712EF1C9053EC00B86FC2 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0712D31C9053EC00B86FC2 /* MASConstraint.m */; };
+		FB0712F01C9053EC00B86FC2 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0712D51C9053EC00B86FC2 /* MASConstraintMaker.m */; };
+		FB0712F11C9053EC00B86FC2 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0712D71C9053EC00B86FC2 /* MASLayoutConstraint.m */; };
+		FB0712F21C9053EC00B86FC2 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0712DB1C9053EC00B86FC2 /* MASViewAttribute.m */; };
+		FB0712F31C9053EC00B86FC2 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0712DD1C9053EC00B86FC2 /* MASViewConstraint.m */; };
+		FB0712F41C9053EC00B86FC2 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0712DF1C9053EC00B86FC2 /* NSArray+MASAdditions.m */; };
+		FB0712F51C9053EC00B86FC2 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0712E21C9053EC00B86FC2 /* NSLayoutConstraint+MASDebugAdditions.m */; };
+		FB0712F61C9053EC00B86FC2 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0712E41C9053EC00B86FC2 /* View+MASAdditions.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FB0712381C90478100B86FC2 /* AJPhotoPickerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AJPhotoPickerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB07123C1C90478100B86FC2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FB07123E1C90478100B86FC2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FB07123F1C90478100B86FC2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FB0712411C90478100B86FC2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FB0712421C90478100B86FC2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FB0712451C90478100B86FC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FB0712471C90478100B86FC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FB07124A1C90478100B86FC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FB07124C1C90478100B86FC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB0712A41C904A7300B86FC2 /* MacroDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroDefine.h; sourceTree = "<group>"; };
+		FB0712BE1C9053EC00B86FC2 /* AJGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJGradientView.h; sourceTree = "<group>"; };
+		FB0712BF1C9053EC00B86FC2 /* AJGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJGradientView.m; sourceTree = "<group>"; };
+		FB0712C01C9053EC00B86FC2 /* AJPhotoGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJPhotoGroupCell.h; sourceTree = "<group>"; };
+		FB0712C11C9053EC00B86FC2 /* AJPhotoGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJPhotoGroupCell.m; sourceTree = "<group>"; };
+		FB0712C21C9053EC00B86FC2 /* AJPhotoGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJPhotoGroupView.h; sourceTree = "<group>"; };
+		FB0712C31C9053EC00B86FC2 /* AJPhotoGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJPhotoGroupView.m; sourceTree = "<group>"; };
+		FB0712C41C9053EC00B86FC2 /* AJPhotoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJPhotoListCell.h; sourceTree = "<group>"; };
+		FB0712C51C9053EC00B86FC2 /* AJPhotoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJPhotoListCell.m; sourceTree = "<group>"; };
+		FB0712C61C9053EC00B86FC2 /* AJPhotoListCellTapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJPhotoListCellTapView.h; sourceTree = "<group>"; };
+		FB0712C71C9053EC00B86FC2 /* AJPhotoListCellTapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJPhotoListCellTapView.m; sourceTree = "<group>"; };
+		FB0712C81C9053EC00B86FC2 /* AJPhotoListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJPhotoListView.h; sourceTree = "<group>"; };
+		FB0712C91C9053EC00B86FC2 /* AJPhotoListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJPhotoListView.m; sourceTree = "<group>"; };
+		FB0712CA1C9053EC00B86FC2 /* AJPhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJPhotoPickerViewController.h; sourceTree = "<group>"; };
+		FB0712CB1C9053EC00B86FC2 /* AJPhotoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJPhotoPickerViewController.m; sourceTree = "<group>"; };
+		FB0712CC1C9053EC00B86FC2 /* BoPhotoPicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BoPhotoPicker.bundle; sourceTree = "<group>"; };
+		FB0712CF1C9053EC00B86FC2 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
+		FB0712D01C9053EC00B86FC2 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
+		FB0712D11C9053EC00B86FC2 /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
+		FB0712D21C9053EC00B86FC2 /* MASConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraint.h; sourceTree = "<group>"; };
+		FB0712D31C9053EC00B86FC2 /* MASConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraint.m; sourceTree = "<group>"; };
+		FB0712D41C9053EC00B86FC2 /* MASConstraintMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraintMaker.h; sourceTree = "<group>"; };
+		FB0712D51C9053EC00B86FC2 /* MASConstraintMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraintMaker.m; sourceTree = "<group>"; };
+		FB0712D61C9053EC00B86FC2 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASLayoutConstraint.h; sourceTree = "<group>"; };
+		FB0712D71C9053EC00B86FC2 /* MASLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASLayoutConstraint.m; sourceTree = "<group>"; };
+		FB0712D81C9053EC00B86FC2 /* Masonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Masonry.h; sourceTree = "<group>"; };
+		FB0712D91C9053EC00B86FC2 /* MASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
+		FB0712DA1C9053EC00B86FC2 /* MASViewAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewAttribute.h; sourceTree = "<group>"; };
+		FB0712DB1C9053EC00B86FC2 /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
+		FB0712DC1C9053EC00B86FC2 /* MASViewConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewConstraint.h; sourceTree = "<group>"; };
+		FB0712DD1C9053EC00B86FC2 /* MASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
+		FB0712DE1C9053EC00B86FC2 /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASAdditions.h"; sourceTree = "<group>"; };
+		FB0712DF1C9053EC00B86FC2 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MASAdditions.m"; sourceTree = "<group>"; };
+		FB0712E01C9053EC00B86FC2 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		FB0712E11C9053EC00B86FC2 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
+		FB0712E21C9053EC00B86FC2 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
+		FB0712E31C9053EC00B86FC2 /* View+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
+		FB0712E41C9053EC00B86FC2 /* View+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
+		FB0712E51C9053EC00B86FC2 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FB0712351C90478100B86FC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FB07122F1C90478100B86FC2 = {
+			isa = PBXGroup;
+			children = (
+				FB0712BD1C9053EC00B86FC2 /* AJPhotoPicker */,
+				FB07123A1C90478100B86FC2 /* AJPhotoPickerExample */,
+				FB0712391C90478100B86FC2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FB0712391C90478100B86FC2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FB0712381C90478100B86FC2 /* AJPhotoPickerExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FB07123A1C90478100B86FC2 /* AJPhotoPickerExample */ = {
+			isa = PBXGroup;
+			children = (
+				FB07123E1C90478100B86FC2 /* AppDelegate.h */,
+				FB07123F1C90478100B86FC2 /* AppDelegate.m */,
+				FB0712411C90478100B86FC2 /* ViewController.h */,
+				FB0712421C90478100B86FC2 /* ViewController.m */,
+				FB0712441C90478100B86FC2 /* Main.storyboard */,
+				FB0712471C90478100B86FC2 /* Assets.xcassets */,
+				FB0712491C90478100B86FC2 /* LaunchScreen.storyboard */,
+				FB07124C1C90478100B86FC2 /* Info.plist */,
+				FB07123B1C90478100B86FC2 /* Supporting Files */,
+			);
+			path = AJPhotoPickerExample;
+			sourceTree = "<group>";
+		};
+		FB07123B1C90478100B86FC2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FB0712A41C904A7300B86FC2 /* MacroDefine.h */,
+				FB07123C1C90478100B86FC2 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FB0712BD1C9053EC00B86FC2 /* AJPhotoPicker */ = {
+			isa = PBXGroup;
+			children = (
+				FB0712BE1C9053EC00B86FC2 /* AJGradientView.h */,
+				FB0712BF1C9053EC00B86FC2 /* AJGradientView.m */,
+				FB0712C01C9053EC00B86FC2 /* AJPhotoGroupCell.h */,
+				FB0712C11C9053EC00B86FC2 /* AJPhotoGroupCell.m */,
+				FB0712C21C9053EC00B86FC2 /* AJPhotoGroupView.h */,
+				FB0712C31C9053EC00B86FC2 /* AJPhotoGroupView.m */,
+				FB0712C41C9053EC00B86FC2 /* AJPhotoListCell.h */,
+				FB0712C51C9053EC00B86FC2 /* AJPhotoListCell.m */,
+				FB0712C61C9053EC00B86FC2 /* AJPhotoListCellTapView.h */,
+				FB0712C71C9053EC00B86FC2 /* AJPhotoListCellTapView.m */,
+				FB0712C81C9053EC00B86FC2 /* AJPhotoListView.h */,
+				FB0712C91C9053EC00B86FC2 /* AJPhotoListView.m */,
+				FB0712CA1C9053EC00B86FC2 /* AJPhotoPickerViewController.h */,
+				FB0712CB1C9053EC00B86FC2 /* AJPhotoPickerViewController.m */,
+				FB0712CC1C9053EC00B86FC2 /* BoPhotoPicker.bundle */,
+				FB0712CD1C9053EC00B86FC2 /* Vendor */,
+			);
+			name = AJPhotoPicker;
+			path = ../AJPhotoPicker;
+			sourceTree = "<group>";
+		};
+		FB0712CD1C9053EC00B86FC2 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				FB0712CE1C9053EC00B86FC2 /* Masonry */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		FB0712CE1C9053EC00B86FC2 /* Masonry */ = {
+			isa = PBXGroup;
+			children = (
+				FB0712CF1C9053EC00B86FC2 /* MASCompositeConstraint.h */,
+				FB0712D01C9053EC00B86FC2 /* MASCompositeConstraint.m */,
+				FB0712D11C9053EC00B86FC2 /* MASConstraint+Private.h */,
+				FB0712D21C9053EC00B86FC2 /* MASConstraint.h */,
+				FB0712D31C9053EC00B86FC2 /* MASConstraint.m */,
+				FB0712D41C9053EC00B86FC2 /* MASConstraintMaker.h */,
+				FB0712D51C9053EC00B86FC2 /* MASConstraintMaker.m */,
+				FB0712D61C9053EC00B86FC2 /* MASLayoutConstraint.h */,
+				FB0712D71C9053EC00B86FC2 /* MASLayoutConstraint.m */,
+				FB0712D81C9053EC00B86FC2 /* Masonry.h */,
+				FB0712D91C9053EC00B86FC2 /* MASUtilities.h */,
+				FB0712DA1C9053EC00B86FC2 /* MASViewAttribute.h */,
+				FB0712DB1C9053EC00B86FC2 /* MASViewAttribute.m */,
+				FB0712DC1C9053EC00B86FC2 /* MASViewConstraint.h */,
+				FB0712DD1C9053EC00B86FC2 /* MASViewConstraint.m */,
+				FB0712DE1C9053EC00B86FC2 /* NSArray+MASAdditions.h */,
+				FB0712DF1C9053EC00B86FC2 /* NSArray+MASAdditions.m */,
+				FB0712E01C9053EC00B86FC2 /* NSArray+MASShorthandAdditions.h */,
+				FB0712E11C9053EC00B86FC2 /* NSLayoutConstraint+MASDebugAdditions.h */,
+				FB0712E21C9053EC00B86FC2 /* NSLayoutConstraint+MASDebugAdditions.m */,
+				FB0712E31C9053EC00B86FC2 /* View+MASAdditions.h */,
+				FB0712E41C9053EC00B86FC2 /* View+MASAdditions.m */,
+				FB0712E51C9053EC00B86FC2 /* View+MASShorthandAdditions.h */,
+			);
+			path = Masonry;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FB0712371C90478100B86FC2 /* AJPhotoPickerExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB07124F1C90478100B86FC2 /* Build configuration list for PBXNativeTarget "AJPhotoPickerExample" */;
+			buildPhases = (
+				FB0712341C90478100B86FC2 /* Sources */,
+				FB0712351C90478100B86FC2 /* Frameworks */,
+				FB0712361C90478100B86FC2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AJPhotoPickerExample;
+			productName = AJPhotoPickerExample;
+			productReference = FB0712381C90478100B86FC2 /* AJPhotoPickerExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FB0712301C90478100B86FC2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = AlienJunX;
+				TargetAttributes = {
+					FB0712371C90478100B86FC2 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = FB0712331C90478100B86FC2 /* Build configuration list for PBXProject "AJPhotoPickerExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FB07122F1C90478100B86FC2;
+			productRefGroup = FB0712391C90478100B86FC2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FB0712371C90478100B86FC2 /* AJPhotoPickerExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FB0712361C90478100B86FC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB07124B1C90478100B86FC2 /* LaunchScreen.storyboard in Resources */,
+				FB0712ED1C9053EC00B86FC2 /* BoPhotoPicker.bundle in Resources */,
+				FB0712481C90478100B86FC2 /* Assets.xcassets in Resources */,
+				FB0712461C90478100B86FC2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FB0712341C90478100B86FC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB0712F61C9053EC00B86FC2 /* View+MASAdditions.m in Sources */,
+				FB0712431C90478100B86FC2 /* ViewController.m in Sources */,
+				FB0712EB1C9053EC00B86FC2 /* AJPhotoListView.m in Sources */,
+				FB0712401C90478100B86FC2 /* AppDelegate.m in Sources */,
+				FB0712E91C9053EC00B86FC2 /* AJPhotoListCell.m in Sources */,
+				FB0712E81C9053EC00B86FC2 /* AJPhotoGroupView.m in Sources */,
+				FB0712F21C9053EC00B86FC2 /* MASViewAttribute.m in Sources */,
+				FB0712EE1C9053EC00B86FC2 /* MASCompositeConstraint.m in Sources */,
+				FB0712EA1C9053EC00B86FC2 /* AJPhotoListCellTapView.m in Sources */,
+				FB0712EC1C9053EC00B86FC2 /* AJPhotoPickerViewController.m in Sources */,
+				FB0712F01C9053EC00B86FC2 /* MASConstraintMaker.m in Sources */,
+				FB0712EF1C9053EC00B86FC2 /* MASConstraint.m in Sources */,
+				FB0712F51C9053EC00B86FC2 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				FB0712F11C9053EC00B86FC2 /* MASLayoutConstraint.m in Sources */,
+				FB0712F41C9053EC00B86FC2 /* NSArray+MASAdditions.m in Sources */,
+				FB07123D1C90478100B86FC2 /* main.m in Sources */,
+				FB0712E61C9053EC00B86FC2 /* AJGradientView.m in Sources */,
+				FB0712E71C9053EC00B86FC2 /* AJPhotoGroupCell.m in Sources */,
+				FB0712F31C9053EC00B86FC2 /* MASViewConstraint.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FB0712441C90478100B86FC2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FB0712451C90478100B86FC2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FB0712491C90478100B86FC2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FB07124A1C90478100B86FC2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FB07124D1C90478100B86FC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FB07124E1C90478100B86FC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FB0712501C90478100B86FC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = AJPhotoPickerExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alienjun.AJPhotoPickerExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FB0712511C90478100B86FC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = AJPhotoPickerExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alienjun.AJPhotoPickerExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FB0712331C90478100B86FC2 /* Build configuration list for PBXProject "AJPhotoPickerExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB07124D1C90478100B86FC2 /* Debug */,
+				FB07124E1C90478100B86FC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FB07124F1C90478100B86FC2 /* Build configuration list for PBXNativeTarget "AJPhotoPickerExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB0712501C90478100B86FC2 /* Debug */,
+				FB0712511C90478100B86FC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FB0712301C90478100B86FC2 /* Project object */;
+}
