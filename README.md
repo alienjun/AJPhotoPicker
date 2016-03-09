@@ -22,7 +22,7 @@
 用法
 ==============
 ###弹出图片选择控件
-    BoPhotoPickerViewController *picker = [[BoPhotoPickerViewController alloc] init];
+    AJPhotoPickerViewController *picker = [[AJPhotoPickerViewController alloc] init];
     //最大可选项
     picker.maximumNumberOfSelection = 5;
     //是否多选
@@ -43,28 +43,29 @@
 
 ###实现委托
 	//选择完成
-	- (void)photoPicker:(BoPhotoPickerViewController *)picker didSelectAssets:(NSArray *)assets;
-	
+	- (void)photoPicker:(AJPhotoPickerViewController *)picker didSelectAssets:(NSArray *)assets;
+
 	//点击选中
-	- (void)photoPicker:(BoPhotoPickerViewController *)picker didSelectAsset:(ALAsset*)asset;
-	
+	- (void)photoPicker:(AJPhotoPickerViewController *)picker didSelectAsset:(ALAsset*)asset;
+
 	//取消选中
-	- (void)photoPicker:(BoPhotoPickerViewController *)picker didDeselectAsset:(ALAsset*)asset;
+	- (void)photoPicker:(AJPhotoPickerViewController *)picker didDeselectAsset:(ALAsset*)asset;
 
 	//点击相机按钮相关操作
-	- (void)photoPickerTapCameraAction:(BoPhotoPickerViewController *)picker;
+	- (void)photoPickerTapCameraAction:(AJPhotoPickerViewController *)picker;
 
 	//取消
-	- (void)photoPickerDidCancel:(BoPhotoPickerViewController *)picker;
+	- (void)photoPickerDidCancel:(AJPhotoPickerViewController *)picker;
 
 	//超过最大选择项时
-	- (void)photoPickerDidMaximum:(BoPhotoPickerViewController *)picker;
+	- (void)photoPickerDidMaximum:(AJPhotoPickerViewController *)picker;
 
 	//低于最低选择项时
-	- (void)photoPickerDidMinimum:(BoPhotoPickerViewController *)picker;
+	- (void)photoPickerDidMinimum:(AJPhotoPickerViewController *)picker;
 
 	//选择过滤
-	- (void)photoPickerDidSelectionFilter:(BoPhotoPickerViewController *)picker;
+	- (void)photoPickerDidSelectionFilter:(AJPhotoPickerViewController *)picker;
+
 
 安装
 ==============
@@ -79,7 +80,7 @@
 	* AssetsLibrary
 	* MobileCoreServices
 	
-4. 导入 `BoPhotoPickerViewController.h`。
+4. 导入 `AJPhotoPickerViewController.h`。
 
 
 

@@ -46,6 +46,7 @@
     self = [super init];
     if (self) {
         [self commonInit];
+        _currentPageIndex = index;
         if (index < 0)
             _currentPageIndex = 0;
         if (index > photos.count-1)
