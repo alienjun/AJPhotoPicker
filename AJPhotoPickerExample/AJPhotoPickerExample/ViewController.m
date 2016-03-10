@@ -14,7 +14,7 @@
 
 @interface ViewController ()<AJPhotoPickerProtocol,AJPhotoBrowserDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIView *multipleView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) NSMutableArray *photos;
 
 @end
@@ -65,8 +65,8 @@
     } else {
         CGFloat x = 0;
         CGRect frame = CGRectMake(0, 0, 50, 50);
-        for (int i = 0 ; i < assets.count; i++) {
-            ALAsset *asset = assets[i];
+        for (int i = 0 ; i < self.photos.count; i++) {
+            ALAsset *asset = self.photos[i];
             UIImage *tempImg = [UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage];
             frame.origin.x = x;
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
@@ -76,9 +76,10 @@
             imageView.tag = i;
             imageView.userInteractionEnabled = YES;
             [imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showBig:)]];
-            [self.multipleView addSubview:imageView];
+            [self.scrollView addSubview:imageView];
             x += frame.size.width+5;
         }
+        self.scrollView.contentSize = CGSizeMake(55 * self.photos.count, 0);
     }
     [picker dismissViewControllerAnimated:NO completion:nil];
     
@@ -133,29 +134,37 @@
 
 - (void)photoBrowser:(AJPhotoBrowserViewController *)vc didDonePhotos:(NSArray *)photos {
     NSLog(@"%s",__func__);
+    [self.photos removeAllObjects];
+    [self.photos addObjectsFromArray:photos];
     
-//    if (photos.count == 1) {
-//        ALAsset *asset = photos[0];
-//        UIImage *tempImg = [UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage];
-//        self.imageView.image = tempImg;
-//     } else {
-//         CGFloat x = 0;
-//         CGRect frame = CGRectMake(0, 0, 50, 50);
-//         for (int i = 0 ; i < photos.count; i++) {
-//             ALAsset *asset = photos[i];
-//             UIImage *tempImg = [UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage];
-//             frame.origin.x = x;
-//             UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
-//             [imageView setContentMode:UIViewContentModeScaleAspectFill];
-//             imageView.clipsToBounds = YES;
-//             imageView.image = tempImg;
-//             imageView.tag = i;
-//             imageView.userInteractionEnabled = YES;
-//             [imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showBig:)]];
-//             [self.multipleView addSubview:imageView];
-//             x += frame.size.width+5;
-//         }
-//     }
+    if (photos.count == 1) {
+        ALAsset *asset = photos[0];
+        UIImage *tempImg = [UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage];
+        self.imageView.image = tempImg;
+     } else {
+         for (UIView *view in self.scrollView.subviews) {
+             [view removeFromSuperview];
+         }
+         
+         CGFloat x = 0;
+         CGRect frame = CGRectMake(0, 0, 50, 50);
+         for (int i = 0 ; i < self.photos.count; i++) {
+             ALAsset *asset = self.photos[i];
+             UIImage *tempImg = [UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage];
+             frame.origin.x = x;
+             UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
+             [imageView setContentMode:UIViewContentModeScaleAspectFill];
+             imageView.clipsToBounds = YES;
+             imageView.image = tempImg;
+             imageView.tag = i;
+             imageView.userInteractionEnabled = YES;
+             [imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showBig:)]];
+             [self.scrollView addSubview:imageView];
+             x += frame.size.width+5;
+         }
+         
+         self.scrollView.contentSize = CGSizeMake(55 * self.photos.count, 0);
+     }
     [vc dismissViewControllerAnimated:YES completion:nil];
 }
 

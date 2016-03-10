@@ -41,9 +41,18 @@
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m75-vK-rZD">
                                 <rect key="frame" x="8" y="407" width="304" height="50"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFw-CJ-ngY">
+                                        <rect key="frame" x="0.0" y="0.0" width="304" height="50"/>
+                                    </scrollView>
+                                </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="bFw-CJ-ngY" secondAttribute="bottom" id="Gwc-5i-ZAA"/>
+                                    <constraint firstItem="bFw-CJ-ngY" firstAttribute="top" secondItem="m75-vK-rZD" secondAttribute="top" id="V9W-sE-9e7"/>
+                                    <constraint firstItem="bFw-CJ-ngY" firstAttribute="leading" secondItem="m75-vK-rZD" secondAttribute="leading" id="aMP-Vq-IVD"/>
                                     <constraint firstAttribute="height" constant="50" id="hL0-Zs-Wjw"/>
+                                    <constraint firstAttribute="trailing" secondItem="bFw-CJ-ngY" secondAttribute="trailing" id="oeO-6Q-mso"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mh2-pW-QZ1">
@@ -61,23 +70,35 @@
                                     <action selector="multipleSelectionAction:" destination="Zy8-P2-dPX" eventType="touchUpInside" id="aMT-Wc-jOP"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点击预览" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kie-pX-hIP">
+                                <rect key="frame" x="8" y="386" width="68" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="3Vi-aH-f3F"/>
+                                    <constraint firstAttribute="width" constant="68" id="CPQ-oM-Xvl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="mh2-pW-QZ1" firstAttribute="centerX" secondItem="Qjm-mq-u8t" secondAttribute="centerX" id="Cxq-Q5-PPd"/>
                             <constraint firstAttribute="trailing" secondItem="m75-vK-rZD" secondAttribute="trailing" constant="8" id="DmB-Wi-On9"/>
+                            <constraint firstItem="m75-vK-rZD" firstAttribute="top" secondItem="kie-pX-hIP" secondAttribute="bottom" id="JWE-f1-OQX"/>
                             <constraint firstItem="m75-vK-rZD" firstAttribute="leading" secondItem="Qjm-mq-u8t" secondAttribute="leading" constant="8" id="U0B-61-gKT"/>
                             <constraint firstItem="Tdg-TA-RyZ" firstAttribute="top" secondItem="mh2-pW-QZ1" secondAttribute="bottom" constant="33" id="VF8-1G-tot"/>
                             <constraint firstItem="mh2-pW-QZ1" firstAttribute="top" secondItem="I5L-ey-VwX" secondAttribute="bottom" constant="180" id="aCe-nJ-ATn"/>
                             <constraint firstItem="mh2-pW-QZ1" firstAttribute="top" secondItem="m75-vK-rZD" secondAttribute="bottom" constant="34" id="cLz-9Z-hwg"/>
                             <constraint firstItem="ZrM-EU-B8v" firstAttribute="centerX" secondItem="Qjm-mq-u8t" secondAttribute="centerX" id="e2u-KV-ei2"/>
                             <constraint firstItem="I5L-ey-VwX" firstAttribute="centerX" secondItem="Qjm-mq-u8t" secondAttribute="centerX" id="eEd-CG-n4l"/>
+                            <constraint firstItem="kie-pX-hIP" firstAttribute="leading" secondItem="Qjm-mq-u8t" secondAttribute="leading" constant="8" id="iAx-FC-ufN"/>
                             <constraint firstItem="I5L-ey-VwX" firstAttribute="top" secondItem="ZrM-EU-B8v" secondAttribute="bottom" constant="10" id="ipp-5j-95C"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="ZrM-EU-B8v" id="bTm-6C-Pa1"/>
-                        <outlet property="multipleView" destination="m75-vK-rZD" id="ZOB-1B-TU1"/>
+                        <outlet property="scrollView" destination="bFw-CJ-ngY" id="sV8-sG-ciw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2h7-Mm-u20" sceneMemberID="firstResponder"/>

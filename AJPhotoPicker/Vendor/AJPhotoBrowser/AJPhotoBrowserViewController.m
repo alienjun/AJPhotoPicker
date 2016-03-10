@@ -26,6 +26,7 @@
     //Paging & layout
     NSMutableSet *_visiblePhotoViews,*_reusablePhotoViews;
 }
+@property (weak, nonatomic) UILabel *titleLabel;
 @end
 
 @implementation AJPhotoBrowserViewController
@@ -66,15 +67,19 @@
 #pragma mark - lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.view.clipsToBounds = YES;
     //initUI
-    [self createScrollView];
-    
-    [self createToolbar];
+    [self initUI];
     
     [self showPhotos];
+    
+    //显示指定索引
+    _photoScrollView.contentOffset = CGPointMake(_currentPageIndex * _photoScrollView.bounds.size.width, 0);
 }
 
-- (void)createScrollView {
+- (void)initUI {
+    //photoScrollview
     CGRect frame = self.view.bounds;
     _photoScrollView = [[UIScrollView alloc] initWithFrame:frame];
     _photoScrollView.pagingEnabled = YES;
@@ -84,33 +89,53 @@
     _photoScrollView.backgroundColor = UIColor.clearColor;
     _photoScrollView.contentSize = CGSizeMake(frame.size.width * _photos.count, 0);
     [self.view addSubview:_photoScrollView];
-    _photoScrollView.contentOffset = CGPointMake(_currentPageIndex * frame.size.width, 0);
-}
-
-- (void)createToolbar {
-    //toolbar
-    UIToolbar *toolBar = [UIToolbar new];
-    toolBar.backgroundColor = [UIColor blackColor];
-    //fixedSpace
-    UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    fixedSpace.width = 10;
-    UIBarButtonItem *centerFlexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
-    //完成
-    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc]initWithTitle:nil style:UIBarButtonItemStylePlain target:self action:@selector(doneBtnAction:)];
-    doneBtn.title = @"完成";
     
-    //删除
-    UIBarButtonItem *delBtn = [[UIBarButtonItem alloc]initWithTitle:nil style:UIBarButtonItemStylePlain target:self action:@selector(delBtnAction:)];
-    delBtn.title = @"删除";
-    [toolBar setItems:@[fixedSpace, delBtn, centerFlexibleSpace, doneBtn, fixedSpace]];
-    
-    [self.view addSubview:toolBar];
-    toolBar.tintColor = [UIColor whiteColor];
-    [toolBar mas_makeConstraints:^(MASConstraintMaker *make) {
+    //infoBar
+    UIView *topView = [UIView new];
+    topView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:topView];
+    [topView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.and.left.and.right.equalTo(self.view);
+        make.height.equalTo(@64);
+    }];
+    
+    //title
+    UILabel *titleLabel = [UILabel new];
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.font = [UIFont systemFontOfSize:20.0];
+    [topView addSubview:titleLabel];
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(topView);
+        make.top.equalTo(topView).offset(20);
         make.height.equalTo(@44);
     }];
+    self.titleLabel = titleLabel;
+    
+    //done
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setTitle:@"完成" forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(doneBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [topView addSubview:btn];
+    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@44);
+        make.width.equalTo(@80);
+        make.right.equalTo(topView);
+        make.top.equalTo(topView).offset(20);
+    }];
+    
+    //delbtn
+    UIButton *delBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [delBtn setTitle:@"删除" forState:UIControlStateNormal];
+    [delBtn addTarget:self action:@selector(delBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [topView addSubview:delBtn];
+    [delBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@44);
+        make.width.equalTo(@80);
+        make.left.equalTo(topView);
+        make.top.equalTo(topView).offset(20);
+    }];
+    
 }
 
 //开始显示
@@ -211,13 +236,13 @@
 }
 
 #pragma mark - Action
-- (void)doneBtnAction:(UIBarButtonItem *)sender {
+- (void)doneBtnAction:(UIButton *)sender {
     if (_delegate && [_delegate respondsToSelector:@selector(photoBrowser:didDonePhotos:)]) {
         [_delegate photoBrowser:self didDonePhotos:_photos];
     }
 }
 
-- (void)delBtnAction:(UIBarButtonItem *)sender {
+- (void)delBtnAction:(UIButton *)sender {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:nil, nil];
     actionSheet.tag = 2;
     [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
@@ -227,8 +252,24 @@
 #pragma mark - UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
+        [_photos removeObjectAtIndex:_currentPageIndex];
+        
         if (_delegate && [_delegate respondsToSelector:@selector(photoBrowser:deleteWithIndex:)]) {
             [_delegate photoBrowser:self deleteWithIndex:_currentPageIndex];
+        }
+        
+        //reload;
+        _currentPageIndex --;
+        if (_currentPageIndex==-1 && _photos.count == 0) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        } else {
+            _currentPageIndex = (_currentPageIndex == (-1) ? 0 : _currentPageIndex);
+            if (_currentPageIndex == 0) {
+                [self showPhotoViewAtIndex:0];
+            } else {
+                _photoScrollView.contentOffset = CGPointMake(_currentPageIndex * _photoScrollView.bounds.size.width, 0);
+            }
+            _photoScrollView.contentSize = CGSizeMake(_photoScrollView.bounds.size.width * _photos.count, 0);
         }
     }
 }
@@ -236,7 +277,19 @@
 #pragma mark - uiscrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self showPhotos];
-    _currentPageIndex = floor((_photoScrollView.contentOffset.x - _photoScrollView.frame.size.width / ([_photos count]+2)) / _photoScrollView.frame.size.width) + 1;
+    int pageNum = floor((_photoScrollView.contentOffset.x - _photoScrollView.frame.size.width / (_photos.count+2)) / _photoScrollView.frame.size.width) + 1;
+    _currentPageIndex = pageNum==_photos.count?pageNum-1:pageNum;
+    [self setTitlePageInfo];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    _currentPageIndex = floor((_photoScrollView.contentOffset.x - _photoScrollView.frame.size.width / (_photos.count+2)) / _photoScrollView.frame.size.width) + 1;
+    [self setTitlePageInfo];
+}
+
+- (void)setTitlePageInfo {
+    NSString *title = [NSString stringWithFormat:@"%lu / %lu",_currentPageIndex+1,(unsigned long)_photos.count];
+    self.titleLabel.text = title;
 }
 
 - (void)dealloc {
