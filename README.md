@@ -3,7 +3,7 @@
 ==============
 基于AssetsLibrary的照片选取器。<br/>
 ![Aaron Swartz](https://github.com/alienjun/PhotoPicker/blob/master/Screenshots/111.gif)
-![Aaron Swartz](https://github.com/alienjun/PhotoPicker/blob/master/Screenshots/222.gif)
+
 
 描述
 ==============
