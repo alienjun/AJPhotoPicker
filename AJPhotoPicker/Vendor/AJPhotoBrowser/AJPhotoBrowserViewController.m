@@ -260,15 +260,15 @@
         
         //reload;
         _currentPageIndex --;
-        if (_currentPageIndex==-1 && _photos.count == 0) {
+        if (_currentPageIndex == -1 && _photos.count == 0) {
             [self dismissViewControllerAnimated:YES completion:nil];
         } else {
             _currentPageIndex = (_currentPageIndex == (-1) ? 0 : _currentPageIndex);
             if (_currentPageIndex == 0) {
                 [self showPhotoViewAtIndex:0];
-            } else {
-                _photoScrollView.contentOffset = CGPointMake(_currentPageIndex * _photoScrollView.bounds.size.width, 0);
+                [self setTitlePageInfo];
             }
+            _photoScrollView.contentOffset = CGPointMake(_currentPageIndex * _photoScrollView.bounds.size.width, 0);
             _photoScrollView.contentSize = CGSizeMake(_photoScrollView.bounds.size.width * _photos.count, 0);
         }
     }
