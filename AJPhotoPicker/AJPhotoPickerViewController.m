@@ -336,19 +336,17 @@
     
     //超出最大限制
     if (self.indexPathsForSelectedItems.count >= self.maximumNumberOfSelection && ![self.indexPathsForSelectedItems containsObject:asset]) {
-        if (_delegate && [_delegate respondsToSelector:@selector(photoPickerDidMaximum:)]) {
+        if (_delegate && [_delegate respondsToSelector:@selector(photoPickerDidMaximum:)])
             [_delegate photoPickerDidMaximum:self];
-            return;
-        }
+        return;
     }
     
     //选择过滤
     BOOL selectable = [self.selectionFilter evaluateWithObject:asset];
     if (!selectable) {
-        if (_delegate && [_delegate respondsToSelector:@selector(photoPickerDidSelectionFilter:)]) {
+        if (_delegate && [_delegate respondsToSelector:@selector(photoPickerDidSelectionFilter:)])
             [_delegate photoPickerDidSelectionFilter:self];
-            return;
-        }
+        return;
     }
     
     //取消选中
