@@ -7,12 +7,12 @@
 
 描述
 ==============
-用于代替系统的图片选择器的控件，基于AssetsLibrary方便定制自己的需求，使用UICollectionView进行图片展示；网上也有一些做的很不错的类似控件，而大多数实现过于复杂不方便自己定制，在试用了几款后决定自己写这个控件；目前已经添加了几个自己需要的功能，同时控件在集成使用时也相对简单，几行代码+委托就可以了。在布局上使用autolayout基于Masonry。
+用于代替系统的图片选择器的控件，基于AssetsLibrary方便定制自己的需求，使用UICollectionView进行图片展示；网上也有一些做的很不错的类似控件，而大多数实现过于复杂不方便自己定制，在试用了几款后决定自己写这个控件；目前已经添加了几个自己需要的功能，同时控件在集成使用时也相对简单，几行代码+委托就可以了。
 
 
 特性
 ==============
-- 基于AssetsLibrary、UICollectionView、Masonry。
+- 基于AssetsLibrary、UICollectionView。
 - 支持 视频、图片选择。
 - 支持多选、滑动多选、预览。
 - 使用方式简单，便于定制。
@@ -72,7 +72,7 @@
 ### 手动安装
 
 1. 下载 AJPhotoPicker 文件夹内的所有内容。
-2. 将 AJPhotoPicker 内的源文件添加(拖放)到你的工程(如果你的工程中有Masonry，可以将AJPhotoPicker下的Vendor/Masonry删除)。
+2. 将 AJPhotoPicker 内的源文件添加(拖放)到你的工程。
 3. 链接以下 frameworks:
 	* UIKit
 	* CoreFoundation
