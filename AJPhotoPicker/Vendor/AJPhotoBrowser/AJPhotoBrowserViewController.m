@@ -12,7 +12,6 @@
 #import "AJPhotoBrowserViewController.h"
 #import "AJPhotoZoomingScrollView.h"
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "Masonry.h"
 
 @interface AJPhotoBrowserViewController()<UIScrollViewDelegate,UIActionSheetDelegate>
 {
@@ -93,48 +92,46 @@
     
     //infoBar
     UIView *topView = [UIView new];
+    topView.translatesAutoresizingMaskIntoConstraints = NO;
     topView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:topView];
-    [topView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.and.left.and.right.equalTo(self.view);
-        make.height.equalTo(@64);
-    }];
+    NSArray *cons1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[topView(==64)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(topView)];
+    NSArray *cons2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[topView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(topView)];
+    [self.view addConstraints:cons1];
+    [self.view addConstraints:cons2];
     
     //title
     UILabel *titleLabel = [UILabel new];
+    titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.font = [UIFont systemFontOfSize:20.0];
     [topView addSubview:titleLabel];
-    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(topView);
-        make.top.equalTo(topView).offset(20);
-        make.height.equalTo(@44);
-    }];
     self.titleLabel = titleLabel;
+    NSArray *titleLabelCons1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[titleLabel(==44)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)];
+    [self.view addConstraints:titleLabelCons1];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:topView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
     
     //done
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.translatesAutoresizingMaskIntoConstraints = NO;
     [btn setTitle:@"完成" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(doneBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:btn];
-    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(@44);
-        make.width.equalTo(@80);
-        make.right.equalTo(topView);
-        make.top.equalTo(topView).offset(20);
-    }];
+    NSArray *doneBtnCons1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[btn(==44)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(btn)];
+    NSArray *doneBtnCons2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[btn(==80)]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(btn)];
+    [topView addConstraints:doneBtnCons1];
+    [topView addConstraints:doneBtnCons2];
     
     //delbtn
     UIButton *delBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    delBtn.translatesAutoresizingMaskIntoConstraints = NO;
     [delBtn setTitle:@"删除" forState:UIControlStateNormal];
     [delBtn addTarget:self action:@selector(delBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:delBtn];
-    [delBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(@44);
-        make.width.equalTo(@80);
-        make.left.equalTo(topView);
-        make.top.equalTo(topView).offset(20);
-    }];
+    NSArray *delBtnCons1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[delBtn(==44)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(delBtn)];
+    NSArray *delBtnCons2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[delBtn(==80)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(delBtn)];
+    [topView addConstraints:delBtnCons1];
+    [topView addConstraints:delBtnCons2];
     
 }
 

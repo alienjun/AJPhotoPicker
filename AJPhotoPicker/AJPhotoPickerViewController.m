@@ -13,7 +13,6 @@
 #import "AJPhotoGroupView.h"
 #import "AJPhotoListView.h"
 #import "AJPhotoListCell.h"
-#import "Masonry.h"
 
 @interface AJPhotoPickerViewController()<AJPhotoGroupViewProtocol,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
@@ -93,14 +92,14 @@
     //界面组件
     UIView *navBar = [[UIView alloc] init];
     navBar.backgroundColor = [UIColor colorWithRed:236.0/255.0 green:66.0/255.0 blue:67.0/255.0 alpha:1.0];
+    navBar.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:navBar];
-    [navBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(@64);
-        make.leading.mas_equalTo(self.view);
-        make.trailing.mas_equalTo(self.view);
-        make.top.mas_equalTo(self.view);
-    }];
     self.navBar = navBar;
+    
+    NSArray *navBarCons1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[navBar]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(navBar)];
+    NSArray *navBarCons2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[navBar(==64)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(navBar)];
+    [self.view addConstraints:navBarCons1];
+    [self.view addConstraints:navBarCons2];
     
     //cancelBtn
     UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -108,47 +107,49 @@
     [cancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [cancelBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     [cancelBtn addTarget:self action:@selector(cancelBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    cancelBtn.translatesAutoresizingMaskIntoConstraints = NO;
     [navBar addSubview:cancelBtn];
-    [cancelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(@44);
-        make.leading.mas_equalTo(navBar);
-        make.top.mas_equalTo(navBar).offset(20);
-        make.width.mas_equalTo(@60);
-    }];
+    
+    NSArray *cancelBtnCons1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[cancelBtn(==60)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(cancelBtn)];
+    NSArray *cancelBtnCons2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[cancelBtn(==44)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(cancelBtn)];
+    [navBar addConstraints:cancelBtnCons1];
+    [navBar addConstraints:cancelBtnCons2];
     
     //title
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [navBar addSubview:titleLabel];
-    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(navBar);
-        make.centerY.mas_equalTo(navBar).offset(10);
-    }];
+
     self.titleLabel = titleLabel;
+    [navBar addConstraint:[NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:navBar attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+    [navBar addConstraint:[NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:navBar attribute:NSLayoutAttributeCenterY multiplier:1 constant:10]];
+    
     UIButton *tapBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     tapBtn.backgroundColor = [UIColor clearColor];
+    tapBtn.translatesAutoresizingMaskIntoConstraints = NO;
     [tapBtn addTarget:self action:@selector(selectGroupAction:) forControlEvents:UIControlEventTouchUpInside];
     [navBar addSubview:tapBtn];
-    [tapBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(titleLabel.mas_width).offset(50);
-        make.centerX.mas_equalTo(navBar);
-        make.centerY.mas_equalTo(navBar).offset(10);
-        make.height.mas_equalTo(@44);
-    }];
     
+    NSArray *tapBtnCons1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[tapBtn(==44)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(tapBtn)];
+    [navBar addConstraints:tapBtnCons1];
+    [navBar addConstraint:[NSLayoutConstraint constraintWithItem:tapBtn attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:navBar attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+    [navBar addConstraint:[NSLayoutConstraint constraintWithItem:tapBtn attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:navBar attribute:NSLayoutAttributeCenterY multiplier:1 constant:10]];
+    [navBar addConstraint:[NSLayoutConstraint constraintWithItem:tapBtn attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:titleLabel attribute:NSLayoutAttributeWidth multiplier:1 constant:50]];
     
     //selectTipImageView
     UIImageView *selectTip = [[UIImageView alloc] init];
     selectTip.image = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"BoPhotoPicker.bundle/images/BoSelectGroup_tip@2x.png"]];
+    selectTip.translatesAutoresizingMaskIntoConstraints = NO;
     [navBar addSubview:selectTip];
-    [selectTip mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(titleLabel.mas_trailing).offset(10);
-        make.width.mas_equalTo(@8);
-        make.height.mas_equalTo(@5);
-        make.centerY.mas_equalTo(titleLabel);
-    }];
     self.selectTip = selectTip;
+    NSArray *selectTipCons1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[selectTip(==5)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(selectTip)];
+    NSArray *selectTipCons2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[titleLabel]-10-[selectTip(==8)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(titleLabel,selectTip)];
+    [navBar addConstraints:selectTipCons1];
+    [navBar addConstraints:selectTipCons2];
+    [navBar addConstraint:[NSLayoutConstraint constraintWithItem:selectTip attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:titleLabel attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+    
     
     //okBtn
     UIButton *okBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -156,14 +157,14 @@
     [okBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [okBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     [okBtn addTarget:self action:@selector(okBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    okBtn.translatesAutoresizingMaskIntoConstraints = NO;
     [navBar addSubview:okBtn];
-    [okBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(@44);
-        make.trailing.mas_equalTo(navBar);
-        make.top.mas_equalTo(navBar).offset(20);
-        make.width.mas_equalTo(@60);
-    }];
+
     self.okBtn = okBtn;
+    NSArray *okBtnCons1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[okBtn(==44)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(okBtn)];
+    NSArray *okBtnCons2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[okBtn(==60)]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(okBtn)];
+    [navBar addConstraints:okBtnCons1];
+    [navBar addConstraints:okBtnCons2];
 }
 
 /**
@@ -173,14 +174,13 @@
     AJPhotoListView *collectionView = [[AJPhotoListView alloc] init];
     collectionView.dataSource = self;
     collectionView.delegate = self;
+    collectionView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view insertSubview:collectionView atIndex:0];
-    [collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(self.view);
-        make.top.mas_equalTo(self.view).offset(64);
-        make.bottom.mas_equalTo(self.view);
-        make.trailing.mas_equalTo(self.view);
-    }];
     self.photoListView = collectionView;
+    NSArray *cons1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-64-[collectionView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(collectionView)];
+    NSArray *cons2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[collectionView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(collectionView)];
+    [self.view addConstraints:cons1];
+    [self.view addConstraints:cons2];
 }
 
 /**
@@ -193,12 +193,12 @@
     [self.view insertSubview:photoGroupView belowSubview:self.navBar];
     self.photoGroupView = photoGroupView;
     photoGroupView.hidden = YES;
-    [photoGroupView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(self.view);
-        make.top.mas_equalTo(self.navBar.mas_bottom).offset(-360);
-        make.trailing.mas_equalTo(self.view);
-        make.height.mas_equalTo(@360);
-    }];
+    photoGroupView.translatesAutoresizingMaskIntoConstraints = NO;
+    UIView *navBar = self.navBar;
+    NSArray *cons1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[navBar]-(-360)-[photoGroupView(==360)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(navBar,photoGroupView)];
+    NSArray *cons2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[photoGroupView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(photoGroupView)];
+    [self.view addConstraints:cons1];
+    [self.view addConstraints:cons2];
 }
 
 - (void)setupData {
@@ -409,17 +409,16 @@
     if (_bgMaskView == nil) {
         UIView *bgMaskView = [[UIView alloc] init];
         bgMaskView.alpha = 0.4;
+        bgMaskView.translatesAutoresizingMaskIntoConstraints = NO;
         bgMaskView.backgroundColor = [UIColor blackColor];
         [self.view insertSubview:bgMaskView aboveSubview:self.photoListView];
         bgMaskView.userInteractionEnabled = YES;
         [bgMaskView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapBgMaskView:)]];
-        [bgMaskView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.view);
-            make.leading.mas_equalTo(self.view);
-            make.trailing.mas_equalTo(self.view);
-            make.bottom.mas_equalTo(self.view);
-        }];
         _bgMaskView = bgMaskView;
+        NSArray *cons1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[bgMaskView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(bgMaskView)];
+        NSArray *cons2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[bgMaskView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(bgMaskView)];
+        [self.view addConstraints:cons1];
+        [self.view addConstraints:cons2];
     }
     return _bgMaskView;
 }
