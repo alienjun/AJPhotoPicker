@@ -34,8 +34,6 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.view.backgroundColor = [UIColor whiteColor];
-        self.automaticallyAdjustsScrollViewInsets = NO;
         _maximumNumberOfSelection = 10;
         _minimumNumberOfSelection = 0;
         _assetsFilter = [ALAssetsFilter allAssets];
@@ -61,6 +59,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     //没有相册访问权限通知
     [[NSNotificationCenter defaultCenter] addObserver:self
