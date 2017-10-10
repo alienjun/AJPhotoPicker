@@ -44,7 +44,7 @@
     picker.multipleSelection = YES;
     picker.assetsFilter = [ALAssetsFilter allPhotos];
     picker.showEmptyGroups = YES;
-    picker.delegate=self;
+    picker.delegate = self;
     picker.selectionFilter = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         return YES;
     }];
