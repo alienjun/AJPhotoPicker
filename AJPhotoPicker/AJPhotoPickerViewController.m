@@ -34,6 +34,8 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        self.view.backgroundColor = [UIColor whiteColor];
+        self.automaticallyAdjustsScrollViewInsets = NO;
         _maximumNumberOfSelection = 10;
         _minimumNumberOfSelection = 0;
         _assetsFilter = [ALAssetsFilter allAssets];

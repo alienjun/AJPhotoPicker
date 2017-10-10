@@ -21,7 +21,7 @@
 
 用法
 ==============
-###弹出图片选择控件
+### 弹出图片选择控件
     AJPhotoPickerViewController *picker = [[AJPhotoPickerViewController alloc] init];
     //最大可选项
     picker.maximumNumberOfSelection = 5;
@@ -41,7 +41,7 @@
     [self presentViewController:picker animated:YES completion:nil];
 
 
-###实现委托
+### 实现委托
 	//选择完成
 	- (void)photoPicker:(AJPhotoPickerViewController *)picker didSelectAssets:(NSArray *)assets;
 
